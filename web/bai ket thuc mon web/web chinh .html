@@ -1,0 +1,472 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <link rel="prefetch">
+    <script src="https://code.iconify.design/2/2.1.2/iconify.min.js"></script>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>DKT Shop</title>
+    <link rel="icon" href="LOGO/dk2.png">
+    <link rel="stylesheet" href="css_webchinh.css">
+
+
+
+</head>
+
+<body>
+
+
+    <!--nút nhảy-->
+    <div class="jup">
+        <a href="#tieude" style="display: block; height: 100%;width: 100%; text-align:center; text-decoration: none; color: black;font-size: 10px;">lên đầu</a>
+    </div>
+
+
+    <!--1. tiêu đề -->
+    <section id="tieude" class="p1">
+        <div class="logo">
+            <a href="#tieude">
+                <img src="logo/dk2.gif">
+                <img src="logo/dk2.png">
+            </a>
+        </div>
+        <form class="search">
+            <span> 
+                    <label for="search">search</label> 
+                </span>
+            <input id="search" type="search" placeholder="search...">
+            <button class="bt_search">
+                    <span class="iconify" data-icon="ant-design:search-outlined"></span>
+                </button>
+        </form>
+
+        <div class="link">
+            <ul>
+                <li> <a href="#">TRANG CHỦ</a></li>
+                <li> <a href="html/form_dangnhap.html">ĐĂNG NHẬP</a></li>
+                <li> <a href="html/profile.html">THÔNG TIN</a></li>
+                <li> <a href="#">LÊN HỆ</a></li>
+                <li> <a href="#">TRỢ GÚP</a></li>
+                <li> <a href="#"><span class="iconify" data-icon="akar-icons:shopping-bag" style="color: white;"></span></a></li>
+            </ul>
+        </div>
+    </section>
+    <!--/1. kết thúc tiêu đề -->
+    <div class="than">
+        <!--2. khung nút -->
+        <div class="p2">
+            <ul>
+                <li><a href="html/loc.html">ĐIỆN THOẠI</a> </li>
+                <li><a href="html/loc.html">MÁY TÍNH</a> </li>
+                <li><a href="html/loc.html">SIM THẺ</a> </li>
+                <li><a href="html/loc.html">PHỤ KIỆN</a>
+                    <ul id="bangdo">
+
+                        <li> <a href="html/loc.html">điện thoại</a> </li>
+                        <li> <a href="html/loc.html">máy tính</a> </li>
+                        <li> <a href="html/loc.html">phụ kiện</a> </li>
+
+
+
+
+                    </ul>
+
+                </li>
+                <li style="float: right;margin-right: 40px;">
+                    <a href="#" style="font-size: 15px;"> <span class="iconify" data-icon="carbon:user-online"></span> hỏi đáp</a>
+                </li>
+                <li style="float: right ;  position: relative;top: 40px; ">
+                    <div style="color: white; width: 400px;height: 100%; background-color: aqua;">
+                        <span>
+                            <div style="float: left; font-size: 11px;">gmail liên hệ:&ensp; </div>
+                            <a href="https://mail.google.com/mail/u/0/?tab=rm&ogbl#inbox?compose=DmwnWrRnXvbQMVlzkTjhpxwftSXCbcMTpdpTbDwKMwvblTqGNpLWHbfRwWsMwCJfjVrkhrrbWcdv" style="color: white;  font-size: 10px; float: left;">mnkhomvm@gmail.com</a>
+                        </span>
+                    </div>
+                </li>
+
+            </ul>
+
+        </div>
+        <!--/2. kết thúc khung nút-->
+
+        <!--3. phần ảnh sản phẩn nổi bật-->
+        <div class="p3">
+            <div class="div32">
+                <span id="chuyen" class="iconify" data-icon="akar-icons:circle-chevron-left-fill" style="position:absolute; top: 500px ; height: 40px; width: 40px;  opacity: 0.5;  left: 170px; " onclick="chuenanh()" loading="chuenanh()"></span>
+                <span id="chuyen" class="iconify" data-icon="akar-icons:circle-chevron-right-fill" style="position:absolute; top: 500px ; height: 40px; width: 40px;  opacity: 0.5; right: 540px;" onclick="chuenanh()"></span>
+
+                <div id="chuyenimg" style="width: 10000px; height: 100%; ">
+                    <img id="imgslide" src="imgslide/slide (1).png">
+                    <img id="imgslide" src="imgslide/slide (2).png">
+                    <img id="imgslide" src="imgslide/slide (3).png">
+                </div>
+            </div>
+
+            <div class="div33">
+                <a href="#"><img src="imgslide/iphone-14-1647926847856.webp" style="width: 320px;height: 320px;"></a>
+            </div>
+        </div>
+        <!--/3. kết thúc phần ảnh sản phẩm nổi bật-->
+
+        <!-- 4. phần lọc-->
+        <div class="p4">
+            <div>
+                <ul>
+                    <li> <a class="loc" href="html/loc.html">điện thoại</a> </li>
+                    <li> <a class="loc" href="html/loc.html">máy tính</a> </li>
+                    <li> <a class="loc" href="html/loc.html">phụ kiện</a> </li>
+                </ul>
+            </div>
+        </div>
+        <!--/4. kết thúc phần lọc-->
+
+        <!--5. danh sách sản phẩm-->
+        <div class="p5">
+            <div>
+                <!--danh sach san pham-->
+                <ul>
+                    <!--sp line1-->
+
+                    <!--sp1-->
+                    <li>
+                        <div class="imgtop">
+                            <a href="html/thongtinsp.html">
+
+                                <img class="imgsp" src="sanpham/Galaxy-S22-Ultra-Burgundy-600x600.jpg">
+                            </a>
+                        </div>
+                        <div class="txtbot">
+                            <span style="color: white;position: relative;left: 20px; width: 50%; float: left;">Samsung Galaxy S22 Ultra 5G   <br><b style="color: rgb(13, 214, 214);">30.990.000₫</b></span>
+                            <a href="html/thanh toan.html"><span id="iconshop" class="iconify" data-icon="arcticons:fast-shopping" style="color: white; float: right; position: relative;  right: 10px; " data-width="30"></span>   </a>
+                    </li>
+
+
+                    <!--sp2-->
+                    <li>
+                        <div class="imgtop">
+                            <a href="html/thongtinsp.html">
+
+                                <img class="imgsp" src="sanpham/iphone-xi-do-600x600.jpg">
+                            </a>
+                        </div>
+                        <div class="txtbot">
+                            <span style="color: white;position: relative;left: 20px; width: 50%; float: left;">iPhone 11 <br><b style="color: rgb(13, 214, 214);">16.290.000₫</b></span>
+                            <a href="html/thanh toan.html"><span id="iconshop" class="iconify" data-icon="arcticons:fast-shopping" style="color: white; float: right; position: relative;  right: 10px; " data-width="30"></span>   </a>
+                    </li>
+
+                    <!--sp3-->
+                    <li>
+                        <div class="imgtop">
+                            <a href="html/thongtinsp.html">
+
+                                <img class="imgsp" src="sanpham/oppo-reno7-z-5g-thumb-1-1-600x600.jpg">
+                            </a>
+                        </div>
+                        <div class="txtbot">
+                            <span style="color: white;position: relative;left: 20px; width: 50%; float: left;">OPPO Reno7 series<br><b style="color: rgb(13, 214, 214);">10.490.000₫</b></span>
+                            <a href="html/thanh toan.html"><span id="iconshop" class="iconify" data-icon="arcticons:fast-shopping" style="color: white; float: right; position: relative;  right: 10px; " data-width="30"></span>   </a>
+                    </li>
+
+                    <!--sp4-->
+                    <li>
+                        <div class="imgtop">
+                            <a href="html/thongtinsp.html">
+
+                                <img class="imgsp" src="sanpham/realme-c35-thumb-new-600x600.jpg">
+                            </a>
+                        </div>
+                        <div class="txtbot">
+                            <span style="color: white;position: relative;left: 20px; width: 50%; float: left;">Realme C35  <br><b style="color: rgb(13, 214, 214);">3.990.000₫</b></span>
+                            <a href="html/thanh toan.html"><span id="iconshop" class="iconify" data-icon="arcticons:fast-shopping" style="color: white; float: right; position: relative;  right: 10px; " data-width="30"></span>   </a> </li>
+
+
+                    <!--endlinesp1-->
+
+
+                    <!--sp line2-->
+                    <!--sp1-->
+                    <li>
+                        <div class="imgtop">
+                            <a href="html/thongtinsp.html">
+
+                                <img class="imgsp" src="sanpham/samsung-galaxy-z-fold-3-silver-1-600x600.jpg">
+                            </a>
+                        </div>
+                        <div class="txtbot">
+                            <span style="color: white;position: relative;left: 20px; width: 50%; float: left;">Samsung Galaxy Z Fold3 5G <br><b style="color: rgb(13, 214, 214);">38.990.000₫</b></span>
+                            <a href="html/thanh toan.html"><span id="iconshop" class="iconify" data-icon="arcticons:fast-shopping" style="color: white; float: right; position: relative;  right: 10px; " data-width="30"></span>   </a> </li>
+
+
+                    <!--sp2-->
+                    <li>
+                        <div class="imgtop">
+                            <a href="html/thongtinsp.html">
+
+                                <img class="imgsp" src="sanpham/iphone-13-pro-max-xanh-la-thumb-600x600.jpg">
+                            </a>
+                        </div>
+                        <div class="txtbot">
+                            <span style="color: white;position: relative;left: 20px; width: 50%; float: left;">iPhone 13 Pro Max Xanh lá <br><b style="color: rgb(13, 214, 214);">33.990.000₫</b></span>
+                            <a href="html/thanh toan.html"><span id="iconshop" class="iconify" data-icon="arcticons:fast-shopping" style="color: white; float: right; position: relative;  right: 10px; " data-width="30"></span>   </a> </li>
+
+                    <!--sp3-->
+                    <li>
+                        <div class="imgtop">
+                            <a href="html/thongtinsp.html">
+
+                                <img class="imgsp" src="sanpham/samsung-galaxy-s21-ultra-bac-600x600-1-600x600.jpg">
+                            </a>
+                        </div>
+                        <div class="txtbot">
+                            <span style="color: white;position: relative;left: 20px; width: 50%; float: left;">Samsung Galaxy S21 Ultra<br><b style="color: rgb(13, 214, 214);">25.990.000₫</b></span>
+                            <a href="html/thanh toan.html"><span id="iconshop" class="iconify" data-icon="arcticons:fast-shopping" style="color: white; float: right; position: relative;  right: 10px; " data-width="30"></span>   </a> </li>
+
+                    <!--sp4-->
+                    <li>
+                        <div class="imgtop">
+                            <a href="html/thongtinsp.html">
+
+                                <img class="imgsp" src="sanpham/airpods-3-hop-sac-khong-day-thumb-600x600.jpeg">
+                            </a>
+                        </div>
+                        <div class="txtbot">
+                            <span style="color: white;position: relative;left: 20px; width: 50%; float: left;">Tai nghe Bluetooth AirPods 3 Apple MME73<br><b style="color: rgb(13, 214, 214);">4.590.000₫</b></span>
+                            <a href="html/thanh toan.html"><span id="iconshop" class="iconify" data-icon="arcticons:fast-shopping" style="color: white; float: right; position: relative;  right: 10px; " data-width="30"></span>   </a> </li>
+                    <!--endlinesp2-->
+
+                    <!--sp line3-->
+                    <!--sp1-->
+                    <li>
+                        <div class="imgtop">
+                            <a href="html/thongtinsp.html">
+
+                                <img class="imgsp" src="sanpham/bluetooth-airpods-2-apple-mv7n2-imei-ava-600x600.jpg">
+                            </a>
+                        </div>
+                        <div class="txtbot">
+                            <span style="color: white;position: relative;left: 20px; width: 50%; float: left;">Tai nghe Bluetooth AirPods 2 Apple MV7N2<br><b style="color: rgb(13, 214, 214);">3.390.000₫</b></span>
+                            <a href="html/thanh toan.html"><span id="iconshop" class="iconify" data-icon="arcticons:fast-shopping" style="color: white; float: right; position: relative;  right: 10px; " data-width="30"></span>   </a> </li>
+
+
+                    <!--sp2-->
+                    <li>
+                        <div class="imgtop">
+                            <a href="html/thongtinsp.html">
+
+                                <img class="imgsp" src="sanpham/tai-nghe-bluetooth-true-wireless-galaxy-buds-pro-ava-1-600x600.jpg">
+                            </a>
+                        </div>
+                        <div class="txtbot">
+                            <span style="color: white;position: relative;left: 20px; width: 50%; float: left;">Tai nghe Bluetooth True Wireless Galaxy Buds Pro<br><b style="color: rgb(13, 214, 214);"> 2.495.000₫</b></span>
+                            <a href="html/thanh toan.html"><span id="iconshop" class="iconify" data-icon="arcticons:fast-shopping" style="color: white; float: right; position: relative;  right: 10px; " data-width="30"></span>   </a> </li>
+
+                    <!--sp3-->
+                    <li>
+                        <div class="imgtop">
+                            <a href="html/thongtinsp.html">
+
+                                <img class="imgsp" src="sanpham/bluetooth-true-wireless-hydrus-ts12bc-thumb-600x600.jpg">
+                            </a>
+                        </div>
+                        <div class="txtbot">
+                            <span style="color: white;position: relative;left: 20px; width: 50%; float: left;">Tai nghe Bluetooth True Wireless Hydrus TS12BC<br><b style="color: rgb(13, 214, 214);">275.000₫</b></span>
+                            <a href="html/thanh toan.html"><span id="iconshop" class="iconify" data-icon="arcticons:fast-shopping" style="color: white; float: right; position: relative;  right: 10px; " data-width="30"></span>   </a> </li>
+
+                    <!--sp4-->
+                    <li>
+                        <div class="imgtop">
+                            <a href="html/thongtinsp.html">
+
+                                <img class="imgsp" src="sanpham/pin-polymer-10000-mah-hydrus-pa-ck01-ava-600x600.jpg">
+                            </a>
+                        </div>
+                        <div class="txtbot">
+                            <span style="color: white;position: relative;left: 20px; width: 50%; float: left;">Hydrus PA CK01<br><b style="color: rgb(13, 214, 214);">245.000₫</b></span>
+                            <a href="html/thanh toan.html"><span id="iconshop" class="iconify" data-icon="arcticons:fast-shopping" style="color: white; float: right; position: relative;  right: 10px; " data-width="30"></span>   </a> </li>
+                    <!--endlinesp3-->
+
+                    <!--sp line4-->
+                    <!--sp1-->
+                    <li>
+                        <div class="imgtop">
+                            <a href="html/thongtinsp.html">
+
+                                <img class="imgsp" src="sanpham/hydrus-pj-jp196-ava-600x600.jpg">
+                            </a>
+                        </div>
+                        <div class="txtbot">
+                            <span style="color: white;position: relative;left: 20px; width: 50%; float: left;">Hydrus PJ JP196<br><b style="color: rgb(13, 214, 214);">245.000₫</b></span>
+                            <a href="html/thanh toan.html"><span id="iconshop" class="iconify" data-icon="arcticons:fast-shopping" style="color: white; float: right; position: relative;  right: 10px; " data-width="30"></span>   </a> </li>
+
+
+                    <!--sp2-->
+                    <li>
+                        <div class="imgtop">
+                            <a href="html/thongtinsp.html">
+
+                                <img class="imgsp" src="sanpham/sac-du-phong-polymer-10000mah-type-c-p66d-xam-avatar-1-600x600.jpg">
+                            </a>
+                        </div>
+                        <div class="txtbot">
+                            <span style="color: white;position: relative;left: 20px; width: 50%; float: left;">Xmobile P66D<br><b style="color: rgb(13, 214, 214);">487.000₫</b></span>
+                            <a href="html/thanh toan.html"><span id="iconshop" class="iconify" data-icon="arcticons:fast-shopping" style="color: white; float: right; position: relative;  right: 10px; " data-width="30"></span>   </a> </li>
+
+                    <!--sp3-->
+                    <li>
+                        <div class="imgtop">
+                            <a href="html/thongtinsp.html">
+
+                                <img class="imgsp" src="sanpham/cap-type-c-lightning-1m-apple-mm0a3-trang-thumb-600x600.jpeg">
+                            </a>
+                        </div>
+                        <div class="txtbot">
+                            <span style="color: white;position: relative;left: 20px; width: 50%; float: left;">Cáp Type C- Lightning Apple MM0A3<br><b style="color: rgb(13, 214, 214);">531.000₫</b></span>
+                            <a href="html/thanh toan.html"><span id="iconshop" class="iconify" data-icon="arcticons:fast-shopping" style="color: white; float: right; position: relative;  right: 10px; " data-width="30"></span>   </a> </li>
+
+                    <!--sp4-->
+                    <li>
+                        <div class="imgtop">
+                            <a href="html/thongtinsp.html">
+
+                                <img class="imgsp" src="sanpham/cap-type-c-1m-hydrus-dr-t04-thumb-1-600x600.jpg">
+                            </a>
+                        </div>
+                        <div class="txtbot">
+                            <span style="color: white;position: relative;left: 20px; width: 50%; float: left;">Cáp Type C 1m Hydrus DR-T04<br><b style="color: rgb(13, 214, 214);">75.000₫</b></span>
+                            <a href="html/thanh toan.html"><span id="iconshop" class="iconify" data-icon="arcticons:fast-shopping" style="color: white; float: right; position: relative;  right: 10px; " data-width="30"></span>   </a> </li>
+                    <!--endlinesp4-->
+
+
+                    <!--sp line5-->
+                    <!--sp1-->
+                    <li>
+                        <div class="imgtop">
+                            <a href="html/thongtinsp.html">
+
+                                <img class="imgsp" src="sanpham/router-wifi-chuan-n-tp-link-tl-wr844n-trang-1-600x600.jpg">
+                            </a>
+                        </div>
+                        <div class="txtbot">
+                            <span style="color: white;position: relative;left: 20px; width: 50%; float: left;">Router Wifi Chuẩn N TP-Link TL-WR844N Trắng<br><b style="color: rgb(13, 214, 214);">249.000₫</b></span>
+                            <a href="html/thanh toan.html"><span id="iconshop" class="iconify" data-icon="arcticons:fast-shopping" style="color: white; float: right; position: relative;  right: 10px; " data-width="30"></span>   </a> </li>
+
+
+                    <!--sp2-->
+                    <li>
+                        <div class="imgtop">
+                            <a href="html/thongtinsp.html">
+
+                                <img class="imgsp" src="sanpham/tai-nghe-chup-tai-gaming-mozardx-ds902-71-den-avatar-1-600x600.jpg">
+                            </a>
+                        </div>
+                        <div class="txtbot">
+                            <span style="color: white;position: relative;left: 20px; width: 50%; float: left;">Tai nghe Chụp Tai Gaming MozardX DS902 7.1<br><b style="color: rgb(13, 214, 214);">483.000₫</b></span>
+                            <a href="html/thanh toan.html"><span id="iconshop" class="iconify" data-icon="arcticons:fast-shopping" style="color: white; float: right; position: relative;  right: 10px; " data-width="30"></span>   </a> </li>
+
+                    <!--sp3-->
+                    <li>
+                        <div class="imgtop">
+                            <a href="html/thongtinsp.html">
+
+                                <img class="imgsp" src="sanpham/tai-nghechup-tai-gaming-rapoo-vh520c-den-600x600.jpg">
+                            </a>
+                        </div>
+                        <div class="txtbot">
+                            <span style="color: white;position: relative;left: 20px; width: 50%; float: left;">Tai nghe chụp tai Gaming Rapoo VH520C Đen<br><b style="color: rgb(13, 214, 214);">479.000₫</b></span>
+                            <a href="html/thanh toan.html"><span id="iconshop" class="iconify" data-icon="arcticons:fast-shopping" style="color: white; float: right; position: relative;  right: 10px; " data-width="30"></span>   </a> </li>
+
+                    <!--sp4-->
+                    <li>
+                        <div class="imgtop">
+                            <a href="html/thongtinsp.html">
+
+                                <img class="imgsp" src="sanpham/chuot-khong-day-gaming-corsair-iron-claw-rgb-den01-600x600.jpg">
+                            </a>
+                        </div>
+                        <div class="txtbot">
+                            <span style="color: white;position: relative;left: 20px; width: 50%; float: left;">Chuột Không Dây Bluetooth Gaming Corsair<br><b style="color: rgb(13, 214, 214);">1.890.000₫</b></span>
+                            <a href="html/thanh toan.html"><span id="iconshop" class="iconify" data-icon="arcticons:fast-shopping" style="color: white; float: right; position: relative;  right: 10px; " data-width="30"></span>   </a> </li>
+                    <!--endlinesp5-->
+
+                </ul>
+
+                </div>
+                <div style="position: relative; top: 60px;">
+                    <ul style="list-style-type: none; padding: 0;">
+                        <li style="border: solid white 1px; background-color: grey; opacity: 1.4; width: 25px;height: 25px; border-radius: 40px; margin-right: 10px;">
+                            <a href="#" style="text-decoration: none; color: white; position: relative ; top: 4px;">&nbsp;1</a>
+                        </li>
+                        <li style="border: solid white 1px; background-color: grey; opacity: 1.4; width: 25px;height: 25px; border-radius: 40px; margin-right: 10px;">
+                            <a href="#" style="text-decoration: none; color: white; position: relative; top: 4px;">&nbsp;2</a>
+                        </li>
+                        <li style="border: solid white 1px; background-color: grey; opacity: 1.4; width: 25px;height: 25px; border-radius: 40px; margin-right: 10px;">
+                            <a href="#" style="text-decoration: none; color: white; position: relative ; top: 4px;">&nbsp;3</a>
+                        </li>
+                    </ul>
+                </div>
+                </div>
+
+                <!-- /5. kết thúc danh sách sản phẩm-->
+                </div>
+
+                <!--6. đường dẫn đến mô tả khác-->
+                <div class="p6">
+                    <div class="qq">
+                        <a href="#"><img src="quangcao/qq (1).png"></a>
+                    </div>
+                    <div class="qq">
+                        <a href="#"><img src="quangcao/qq (2).png"></a>
+                    </div>
+                    <div class="qq">
+                        <a href="#"><img src="quangcao/qq (3).png"></a>
+                    </div>
+                    <div class="qql">
+                        <a href="#"><img src="quangcao/qql (1).png" style="height: 300px; float: left;"></a>
+                    </div>
+                    <div class="hotro_on_bot"><span style="color: white; position: relative; top: 150px; left: 2%;"> &nbsp;&nbsp;&nbsp;&nbsp;bạn có vấn đề ? <br> <a href="#" style=" text-decoration: none;"><div style="width: 180px; line-height: 40px; background-color: rgb(255, 255, 255); color: black; border-radius: 14px; padding-left:10px ;"> lên hệ với chúng tôi</div> </a></span></div>
+
+
+
+                </div>
+                <!--/6. kết thúc đương  dẫn đến mô tả khác-->
+
+                <!--7. phần cuối-->
+                <div class="p7">
+                    <div class="p71">
+                        <br>
+                        <h3 style="color: white; margin-left: 10px;">về chúng tôi</h3>
+                        <div>
+                            <span style="color: rgb(163, 163, 163); font-size: 10px; "> giới thiệu <br> giao hàng<br>đổi trả </span>
+                        </div>
+                    </div>
+                    <div class="p71">
+                        <br>
+                        <h3 style="color: white; margin-left: 10px;">trợ giúp</h3>
+                        <div>
+                            <span style="color: rgb(163, 163, 163); font-size: 10px; ">hướng dẫn mua hàng <br> hướng dẫn thanh toán<br> tài khoản giao dịch </span>
+                        </div>
+                    </div>
+                    <div class="p71">
+                        <br>
+                        <h3 style="color: white; margin-left: 10px;">liên kết</h3>
+                        <div>
+                            <a class="a_p7" href="#"><span class="iconify" data-icon="entypo-social:facebook" style="color: white;" data-width="30"></span><b style="position: relative; left: 4px; top: -8px;">Facebook</b></a><br>
+                            <a class="a_p7" href="#"><span class="iconify" data-icon="fa-brands:google-plus-square" style="color: white;" data-width="30"></span><b style="position: relative; left: 4px; top: -8px;">Google Plus</b></a> <br>
+                            <a class="a_p7" href="#"><span class="iconify" data-icon="fa-brands:twitter-square" style="color: white;" data-width="30"></span><b style="position: relative; left: 4px; top: -8px;">Google Plus</b></a>
+                        </div>
+                    </div>
+
+
+
+
+                </div>
+                <!--/7. kết thúc phần cuối-->
+
+                <!--nút nhảy-->
+                <script type="text/javascript" src="./main form.js"></script>
+</body>
+
+</html>

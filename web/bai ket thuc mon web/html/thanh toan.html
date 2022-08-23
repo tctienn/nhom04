@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="../css/thanhtoan.css">
+    <link rel="icon" href="../LOGO/logo/logo/dk5.png">
+    <title>DKT Checkout</title>
+</head>
+<body>
+    
+    <div style="position: fixed; left: 10px; top: 40px;"> <a href="../web chinh .html" style="text-decoration: none;">< Quay lại</a></div>
+    <div id="codon"class="codon">
+        <div style="width: 200px;height: 200px; margin: auto; "><p> bạn có muốn thanh toán với những gì bạn đã chọn ? </p></div>
+       
+        <div style="position: relative; top: -70px;"><button id="co" style="width: 70px; height: 40px; background-color: #252587;  border-radius: 10px; margin-left: 20px;margin-right: 20px;" onclick="co()"> Có</button><button id="ko" style="width: 200px; height: 40px; background-color: #252587; border-radius: 10px;" onclick="no()"> Có lẽ tôi cần xem lại</button></div>
+        
+    </div>
+  
+    <!--p1-->
+        <div class="p1">
+            
+
+               
+        </div>
+    <!--endp1-->
+    
+    <!--p2-->
+    <div class="p2">
+        <div class="p21">
+            <div class="p22">
+                <div class="imgsp">
+                    <img id="sp" src="../sanpham/hydrus-pj-jp196-ava-600x600.jpg" >
+                    <div style="float: left;">
+                        <h3><br>&ensp;&ensp;Hydrus PA CK01</h3>
+                        <small>
+                            &ensp;&ensp;&ensp;kho : 14/c<br>
+                            &ensp;&ensp;&ensp;Giá : 245.000₫
+
+                        </small>
+                    </div>
+                </div>
+
+                <hr style="border-top: none;border-bottom: solid rgb(125, 125, 125) 1px;">
+                <div class="thongtin">
+                    
+                    
+                    <ul>
+                        <li><div><br>&ensp;Giá 1 sản phẩm :245.000₫ </div></li>
+                        <br>
+                        <b>&ensp; Phương thức thanh toán :</b>
+                        <li>
+                            <div>
+                                <select style="width: 100%; height: 100%; border-radius: 10px; background-color: #101053; color: aliceblue;">
+                                    <option value="Mobivi">Mobivi</option>
+                                    <option value="Payoo">Payoo</option>
+                                    <option value="VnMart"> VnMart</option>
+                                    <option value="Momo">Momo</option>
+                                </select>
+                            </div>
+                        </li> <br>
+                        <li><div><br><b style="float: left;">&ensp;số lượng sản phẩm :</b>
+                            <div id="them" onclick="dieuchinh('t')" >&ensp;+ </div>
+                                <i id="giatri" style="float: left; margin-left: 4px; margin-right: 4px;">1</i>
+                            <div id="giam" onclick="dieuchinh('g')" >&ensp;-</div>
+                            </div>
+                        </li><br><br>
+                        <li><div><br>&ensp;Giá các sản phẩm :  <i id="giasp">245.000</i>₫ </div></li>
+                        <br>
+                        <li><div><br>&ensp;sự kiện giảm giá hoặc ưu đãi : NULL </div></li>
+                        <br>
+                        <li><div><br>&ensp; Giá cuối :<i id="allgia">245.000</i>₫ </div></li>
+                    </ul>
+                    <button id="andon" onclick="andon()" style="width: 400px; height: 40px; background-color: #191970; border-radius: 20px; margin-left: 200px;">Chốt đơn</button>
+                    
+                </div>
+               
+
+                
+            </div>
+        </div>        
+    </div>
+    <!--end p2-->
+
+
+    <script src="../js/thanhtoan.js"></script>
+</body>
+</html>
