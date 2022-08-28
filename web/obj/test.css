@@ -1,0 +1,22 @@
+a {
+    width: 100%;
+
+    /* aspect-ratio: 2/2; */
+    transform: 1000s;
+    transition: 2s;
+    border: none;
+    text-decoration: none;
+}
+
+p {
+    width: 100%;
+}
+
+p:hover {
+    /* height: 200px; */
+    width: 2%;
+    border-bottom: solid 1px black;
+    background-color: aqua;
+    transition: 4s;
+    /* transform: scale(1.2); */
+}
