@@ -20,7 +20,7 @@
         <?php
             require_once ("../component/hea_der.php")
         ?>
-oy
+oy oy2
         <!--end header-->
 
         <!--natbar-->
