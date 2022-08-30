@@ -207,11 +207,18 @@
 .food {
     width: 78%;
     margin: auto;
+
+}
+
+.food>ul {
+    display: flex;
 }
 
 .food>ul>li {
     display: flex;
     flex-direction: column;
+
+
 }
 
 .food>ul>li>a {

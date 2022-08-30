@@ -20,7 +20,7 @@
         <?php
             require_once ("../component/hea_der.php")
         ?>
-oy
+
         <!--end header-->
 
         <!--natbar-->
@@ -660,33 +660,15 @@ oy
                     <img src="../image/banner-home-v2.webp" style="width: 100%;" alt="">
                 </a>
             </div>
+            <br><br>
 
         </div>
         <!--end poster-->
-
+        <br>
         <!--food-->
-        <div class="food row">
-            <ul style="list-style-type: none; padding: 0;">
-                <li class="col-md-2">
-                    <b>VỀ CHÚNG TÔI</b>
-                    <a href="#">Giới thiệu</a>
-                    <a href="#">Hệ thống cửa hàng</a>
-                    <a href="#">Giấy phép kinh doanh</a>
-                    <a href="#">Quy chế hoạt động</a>
-                    <a href="#">Chính sách đặt cọc</a>
-                    <a href="#">Chính sách đổi trả thuốc</a>
-                    <a href="#">Chính sách giao hàng</a>
-                    <a href="#">Chính sách bảo mật</a>
-                    <a href="#">Chính sách thanh toán</a>
-                    <a href="#">Kiểm tra hóa đơn điện tử</a>
-                    <a href="#">Tra cứu đơn hàng</a>
-                </li>
-                <li class="col-md-2"></li>
-                <li class="col-md-2"></li>
-                <li class="col-md-2"></li>
-                <li class="col-md-2"></li>
-            </ul>
-        </div>
+        <?php
+            require_once("../component/footer.php");
+        ?>
         <!--end food-->
 
         <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"
