@@ -23,6 +23,16 @@
     require_once("component/hea_der.php");
     // require_once("html/index.php")
 ?>
+
+
+<button>
+    <script>
+        var url = new URL(window.location.href);
+        var productName = url.searchParams.get("name");
+    </script>
+    a
+    alter("vbnm,.")
+</button>
 </body>
 </html>
 <!--  -->
