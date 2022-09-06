@@ -42,7 +42,7 @@
    
 
     <!---->
-
+    
 
     <div class="p2">
         <div class="formdangky">
@@ -50,9 +50,9 @@
                 Đăng ký
             </div>
             <br>
-            <hr style="border-bottom: solid #0e3ea8 1px;">\
+            <hr style="border-bottom: solid #0e3ea8 1px;">
 
-            <form class="indangky" method="post" action="dangky.php">
+            <form class="indangky"  >
                 <ul>
                     <li>
                         <label for="tk"> tài khoản &nbsp;&nbsp;</label>
@@ -99,7 +99,7 @@
 
                 <input class="button" type="submit" name="dangky" value="Tạo tài khoản"><br>
                 <?php
-                    require("../classes/themtk.php");
+                    require_once("../classes/themtk.php");
                 ?>
                 <br>
                 <hr style="width: 80%; margin: auto; border-top: none;"><br><b
@@ -113,6 +113,7 @@
 
     </div>
     
+  
     <script src="../js/dangky.js"></script>
    
 </body>
