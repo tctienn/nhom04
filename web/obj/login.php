@@ -143,7 +143,7 @@ if ($action == "login") {
                                 <input type="submit" name="submit" class="btn btn-info btn-md" value="Đăng nhập">
                             </div>
                             <div id="register-link" class="text-right">
-                                <a href="#" class="text-info">Register here</a>
+                                <a href="./logup.php" class="text-info">Đăng ký</a>
                             </div>
                         </form>
                     </div>
