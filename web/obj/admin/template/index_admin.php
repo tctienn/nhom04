@@ -1,3 +1,6 @@
+<?php 
+  session_start();
+?>
 <!DOCTYPE html>
 <html lang="en">
 
@@ -219,7 +222,16 @@
                   class="dropdown-item-icon mdi mdi-calendar-check-outline text-primary me-2"></i> Activity</a>
               <a class="dropdown-item"><i class="dropdown-item-icon mdi mdi-help-circle-outline text-primary me-2"></i>
                 FAQ</a>
-              <a class="dropdown-item"><i class="dropdown-item-icon mdi mdi-power text-primary me-2"></i>Sign Out</a>
+              <a href='<?= $_SESSION['login']!=1?"../../login.php":"../../logout.php" ?>' class="dropdown-item"><i class="dropdown-item-icon mdi mdi-power text-primary me-2"></i>
+              
+                <?php 
+                  if($_SESSION['login']==1) 
+                  $a="đăng xuất";
+                  else $a=" đăng nhập"; 
+                  echo "$a"; 
+                  
+                ?>
+              </a>
             </div>
           </li>
         </ul>

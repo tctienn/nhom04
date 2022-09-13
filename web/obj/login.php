@@ -1,13 +1,14 @@
 <?php
 
 session_start();
+$_SESSION['login']='0';
 require_once("functions/functions.php");
 // require_once("config.php");
 require_once("classes/dbConnection.php");
 
-$username = getValue("username", "POST", "str", "");
-$password = getValue("password", "POST", "str", "");
-$action = getValue("action", "POST", "str", "");
+// $username = getValue("username", "POST", "str", "");
+// $password = getValue("password", "POST", "str", "");
+// $action = getValue("action", "POST", "str", "");
 
 
 // var_dump($_POST);
@@ -15,7 +16,12 @@ $action = getValue("action", "POST", "str", "");
 // var_dump($password);
 
 $errorMsg = "";
-if ($action == "login") {
+if (isset($_GET['action']) && $_GET['action'] == "login") {
+    if(isset($_POST['username']) && $_POST['password'])
+    {
+        $username=$_POST['username'];
+        $password=$_POST['password'];
+    }
     if ($username == "") {
         $errorMsg .= "&bull; Vui lòng nhập User Name.<br />";
     }
@@ -37,28 +43,36 @@ if ($action == "login") {
     $dbConnection = new dbConnection();
     $conn = $dbConnection->getConnection();
     // $username="";
-    $sql = "SELECT * FROM users WHERE name = '$username' AND password='$password'";
-    $result = $conn->query($sql);
-    if ($result->num_rows != 0) {
-        {   
-            $row = $result->fetch_assoc(); 
-            if ($row["is_admin"]==1) {
-                // Success
-                // echo "Success";
-                $_SESSION["logged"] = 1;
-                header("Location: themmoi.php");
-            } 
-            else
-            {
-                $_SESSION["logged"] = 1;
-                header("Location: sa/Untitled-1.html");
+    try {
+        //code...
+        $sql = "SELECT * FROM user WHERE usename = '$username' AND password=md5('$password')";
+        $result = $conn->query($sql);
+        if ($result->num_rows != 0) {
+            {   $errorMsg=''; 
+                $row = $result->fetch_assoc(); 
+                if ($row["is_admin"]==1) {
+                    // Success
+                    // echo "Success";
+                    $_SESSION['login'] = 1;
+                    header("Location: http://localhost/monwebnangcao/obj_clone/nhom04/web/obj/admin/template/index_admin.php");
+                } 
+                else
+                {
+                    $_SESSION["logged"] = 1;
+                    header("Location: http://localhost/monwebnangcao/obj_clone/nhom04/web/obj/html/");
+                    // header("Location: sa/Untitled-1.html");
+                }
             }
         }
+        else {
+            $errorMsg = "&bull; Thông tin đăng nhập không đúng. Vui lòng thử lại.<br />";
+        }
+        
+        $conn->close();
+    } catch (\Throwable $th) {
+        //throw $th;
+        $errorMsg= "lỗi cơ sở dữ liệu";
     }
-    else {
-        $errorMsg = "&bull; Thông tin đăng nhập không đúng. Vui lòng thử lại.<br />";
-    }
-    $conn->close();
 /////////////////////
 }
 
@@ -119,23 +133,39 @@ if ($action == "login") {
 <body>
     <div id="login">
         <div class="container">
-            <?php if ($errorMsg != "") { ?>
-                <div class="alert alert-danger" id="login-err-msg">
-                    <?= $errorMsg ?>
-                </div>
-            <?php } ?>
+            <?php 
+                if(isset($_POST['action']))
+                {
+                    if($_GET['action']=='login')
+                    {
+                        if ( $errorMsg != "") { ?>
+                            <div class="alert alert-danger" id="login-err-msg">
+                                đăng nhập không thành công:  <?= $errorMsg ?>
+                            </div>
+                            <?php }
+                            else
+                            {
+                                ?>
+                                    <div class="alert alert-danger" id="login-err-msg">
+                                        đăng nhập  thành công
+                                    </div>
+                                <?php
+                            }
+                    }
+                }
+            ?>
             <div id="login-row" class="row justify-content-center align-items-center">
                 <div id="login-column" class="col-md-6">
                     <div id="login-box" style='background-color: #ffffffcc; border-radius: 10px; margin-top:40px' class="col-md-12">
-                        <form id="login-form" class="form" action="" method="post">
+                        <form id="login-form" class="form" action="./login.php?action=login" method="post">
                             <h3 class="text-center text-info">ĐĂNG NHẬP</h3>
                             <div class="form-group">
                                 <label for="username" class="text-info">Tên đăng nhập/gmail:</label><br>
-                                <input type="text" name="username" id="username" class="form-control" value="<?= $username ?>">
+                                <input type="text" name="username" id="username" class="form-control" >
                             </div>
                             <div class="form-group">
                                 <label for="password" class="text-info">Mật khẩu:</label><br>
-                                <input type="password" name="password" id="password" class="form-control" value="<?= $password ?>">
+                                <input type="password" name="password" id="password" class="form-control" autocomplete="off"   placeholder="mật khẩu" >
                             </div>
                             <div class="form-group">
                                 <label for="remember-me" class="text-info"><span>Nhớ mật khẩu</span> <span><input id="remember-me" name="remember-me" type="checkbox"></span></label><br>
@@ -151,6 +181,9 @@ if ($action == "login") {
             </div>
         </div>
     </div>
+    
+     
+                
 </body>
 
 </html>

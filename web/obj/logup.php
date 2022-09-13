@@ -1,6 +1,7 @@
 <?php
-
-
+session_start();
+// $a=$_SESSION['login'];
+// echo "$a";
     $error=false;
 
     
