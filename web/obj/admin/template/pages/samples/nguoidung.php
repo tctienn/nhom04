@@ -55,10 +55,10 @@
                         <?= date('d/m/Y ',$row["create_time"])  ?>
                     </td>
                     <td>
-                        <a href="" >sửa</a>
+                        <a href="./edit_user/edit_user.php?id=<?=$row["id"]?>" >sửa</a>
                     </td>
                     <td>
-                        <a href="#">xóa</a>
+                        <a href="./delete_user/delete_user.php?id=<?=$row["id"]?>">xóa</a>
                     </td>
                 </tr>
         <?php

@@ -5,7 +5,7 @@
   <!-- Required meta tags -->
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-  <title>Star Admin2 </title>
+  <title> Admin </title>
   <!-- plugins:css -->
   <link rel="stylesheet" href="vendors/feather/feather.css">
   <link rel="stylesheet" href="vendors/mdi/css/materialdesignicons.min.css">
@@ -493,7 +493,7 @@
             <div class="collapse" id="auth">
               <ul class="nav flex-column sub-menu">
                 <!-- <li class="nav-item"> <a class="nav-link" href="pages/samples/login.html"> Login </a></li> -->
-                <li class="nav-item"> <a class="nav-link" href="pages/samples/nguoidung.php"> Login </a></li>
+                <li class="nav-item"> <a class="nav-link" href="pages/samples/nguoidung.php"> danh sách tài khoản </a></li>
               </ul>
             </div>
           </li>
