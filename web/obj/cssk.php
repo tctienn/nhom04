@@ -18,7 +18,7 @@
     <div class="container-fluid">
         <!--header-->
         <?php
-            require_once ("../component/hea_der.php")
+            require_once ("component/hea_der.php")
         ?>
 
         <!--end header-->

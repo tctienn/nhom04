@@ -225,11 +225,15 @@
               <a href='<?= $_SESSION['login']!=1?"../../login.php":"../../logout.php" ?>' class="dropdown-item"><i class="dropdown-item-icon mdi mdi-power text-primary me-2"></i>
               
                 <?php 
+                 if(isset($_SESSION['login']))
+                 {
                   if($_SESSION['login']==1) 
                   $a="đăng xuất";
                   else $a=" đăng nhập"; 
-                  echo "$a"; 
-                  
+                 
+                 }
+                 else $a="chưa đăng nhập";
+                 echo "$a"; 
                 ?>
               </a>
             </div>
