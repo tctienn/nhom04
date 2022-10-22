@@ -1,3 +1,4 @@
+<!--  -->
 <!DOCTYPE html>
 <html lang="en">
 
@@ -17,12 +18,34 @@
     
     <div class="container-fluid">
         <!--header-->
-        <?php
-            require_once ("../component/hea_der.php")
-        ?>
+        <div class="container-fluid" style="padding: 0; ">
+        <!--header-->
+        <div class="container-fluid" id="header">
+            <div class="container row" id="onhead">
+                <div class="col-md-9">
+                    <div class="logo row">
+                        <i> nhà thuốc</i>
+                        <b>Long Châu</b>
+                    </div>
+                </div>
+                <div class="col-md-3" id="right_head">
+                    <iconify-icon icon="akar-icons:file" style=" color: white; margin-top: -15px;" width="27"
+                        height="31 ; ">
+                    </iconify-icon> &nbsp;
+                    <p>
+                        Tra cứu <br>Lịch sử đơn hàng
+                    </p> &nbsp; &nbsp;
+                    <iconify-icon icon="el:shopping-cart" style="color: white; margin-top: -15px;" width="27"
+                        height="31"></iconify-icon> &nbsp;
+                    <p style="margin-top: 6%;">
+                        Giỏ hàng
+                    </p>
+                </div>
+            </div>
+        </div>
 
         <!--end header-->
-
+       
         <!--natbar-->
         <nav class="navbar navbar-expand-lg"
             style="  --bs-bg-opacity: 0; z-index: 2; background-color: white; box-shadow: 0 2px 15px -10px black;">
@@ -36,9 +59,9 @@
                                 aria-expanded="false">
                                 thực phẩm chức năng
                             </a>
-                            <div class="dropdown-menu">
+                            <div class="dropdown-menu" >
                                 <div>
-                                    <ul style="border-right:solid 1px black ; width: 30%;">
+                                    <ul style="border-right: solid 1px black ; width: 30%; ">
                                         <li><a class="dropdown-item" href="#"><img id="img_mt"
                                                     src="../image/sinh-ly-noi-tiet-to.webp" alt=""> sinh lý -Nội tiết
                                                 tố</a></li>

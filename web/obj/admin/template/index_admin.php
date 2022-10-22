@@ -454,12 +454,17 @@
             <a class="nav-link" data-bs-toggle="collapse" href="#form-elements" aria-expanded="false"
               aria-controls="form-elements">
               <i class="menu-icon mdi mdi-card-text-outline"></i>
-              <span class="menu-title">Form elements</span>
+              <span class="menu-title">Quan lý sản phẩm</span>
               <i class="menu-arrow"></i>
             </a>
-            <div class="collapse" id="form-elements">
+            <!-- <div class="collapse" id="form-elements">
               <ul class="nav flex-column sub-menu">
                 <li class="nav-item"><a class="nav-link" href="pages/forms/basic_elements.html">Basic Elements</a></li>
+              </ul>
+            </div> -->
+            <div class="collapse" id="form-elements">
+              <ul class="nav flex-column sub-menu">
+                <li class="nav-item"><a class="nav-link" href="pages/forms/Demoupload.php">danh sách sản phẩm</a></li>
               </ul>
             </div>
           </li>
@@ -509,7 +514,7 @@
             <div class="collapse" id="auth">
               <ul class="nav flex-column sub-menu">
                 <!-- <li class="nav-item"> <a class="nav-link" href="pages/samples/login.html"> Login </a></li> -->
-                <li class="nav-item"> <a class="nav-link" href="pages/samples/nguoidung.php"> danh sách tài khoản </a></li>
+                <li class="nav-item"> <a class="nav-link" href="pages/nguoidung/nguoidung.php"> danh sách tài khoản </a></li>
               </ul>
             </div>
           </li>

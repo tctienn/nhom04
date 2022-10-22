@@ -2,7 +2,7 @@
 
 session_start();
 $_SESSION['login']='0';
-require_once("functions/functions.php");
+// require_once("functions/functions.php");
 // require_once("config.php");
 require_once("classes/dbConnection.php");
 
