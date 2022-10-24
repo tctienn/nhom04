@@ -464,9 +464,20 @@
             </div> -->
             <div class="collapse" id="form-elements">
               <ul class="nav flex-column sub-menu">
-                <li class="nav-item"><a class="nav-link" href="pages/forms/Demoupload.php">danh sách sản phẩm</a></li>
+                <li class="nav-item"><a class="nav-link" href="pages/dsimg/Demoupload.php">danh sách ảnh</a></li>
               </ul>
             </div>
+            <div class="collapse" id="form-elements">
+              <ul class="nav flex-column sub-menu">
+                <li class="nav-item"><a class="nav-link" href="pages/sanpham/danhsachSP.php">danh sách sản phẩm</a></li>
+              </ul>
+            </div>
+            <div class="collapse" id="form-elements">
+              <ul class="nav flex-column sub-menu">
+                <li class="nav-item"><a class="nav-link" href="pages/sanpham/Addproduct.php">thêm sản phẩm</a></li>
+              </ul>
+            </div>
+
           </li>
           <li class="nav-item">
             <a class="nav-link" data-bs-toggle="collapse" href="#charts" aria-expanded="false" aria-controls="charts">
