@@ -1,4 +1,13 @@
 <!--  -->
+<?php
+    session_start();
+    $_SESSION['login']='0';
+    require ('../classes/dbConnection.php');
+    $dbConnection = new dbConnection();
+    $conn = $dbConnection->getConnection();
+    $sql = "SELECT * FROM sanpham where deleted=1 ORDER BY id ASC limit 0,15 ";
+
+?>
 <!DOCTYPE html>
 <html lang="en">
 
@@ -22,16 +31,40 @@
         <!--header-->
         <div class="container-fluid" id="header">
             <div class="container row" id="onhead">
-                <div class="col-md-9">
+                <div class="col-md-8">
                     <div class="logo row">
                         <i> nhà thuốc</i>
                         <b>Long Châu</b>
                     </div>
                 </div>
-                <div class="col-md-3" id="right_head">
+                <div class="col-md-4" id="right_head">
+                        
+                    <iconify-icon icon="mdi:human-male-board" style="color: white; margin-top: -15px;" width="27" height="31"></iconify-icon>&nbsp;
+                    <?php
+                        if($_SESSION['login']==1)
+                        {
+                            ?>
+                                <form  action="./index.php?login=out" method="post"  >
+                                    <input type="submit" style="margin-left: -10px; color:white ; text-decoration: none; background: none; border: none;" value="đăng xuât" >&nbsp;&nbsp;
+                                </form>
+                            <?php
+                            if(isset($_GET['login']) && $_GET['login']=='out')
+                            {
+                                $_SESSION['login']=0;
+                                
+                            }
+                        }
+                        
+                        else{
+                            ?>
+                                <a href="../login.php" style="margin-left: -10px; color:white ; text-decoration: none;">đăng nhập</a>&nbsp;&nbsp;
+                            <?php
+                        }
+                    ?>
+                    
                     <iconify-icon icon="akar-icons:file" style=" color: white; margin-top: -15px;" width="27"
                         height="31 ; ">
-                    </iconify-icon> &nbsp;
+                    </iconify-icon> &nbsp;&nbsp;
                     <p>
                         Tra cứu <br>Lịch sử đơn hàng
                     </p> &nbsp; &nbsp;
@@ -461,7 +494,24 @@
             </h5>
 
             <div style="width: 100%; display: flex; justify-content: space-evenly; flex-wrap: wrap;">
-                <div class="item_product2">
+            <?php
+                $result = $conn->query($sql);
+    
+                if ($result->num_rows > 0) {
+                    while ($row = $result->fetch_assoc()) {
+                        ?>
+                             <div class="item_product2">
+                                <img class="img_product" src="<?=$row['img']?>" alt="">
+                                <p><?= $row['name']?></p>
+                                <p>
+                                    <b><?=$row['gia']?>đ</b>/hộp
+                                </p>
+                            </div>
+                        <?php
+                    }
+                }
+            ?>
+                <!-- <div class="item_product2">
                     <img class="img_product" src="../image/00021988-anica-phytextra-60v-7325-62ae_large.webp" alt="">
                     <p>Viên Uống Bổ Sung Canxi</p>
                     <p>
@@ -567,8 +617,8 @@
                     <p>
                         <b>517.000đ</b>/hộp
                     </p>
-                </div>
-            </div>
+                </div> -->
+            <!-- </> -->
         </div>
         <!--end product-->
         <!--blogs-->

@@ -58,7 +58,7 @@ if (isset($_GET['action']) && $_GET['action'] == "login") {
                 } 
                 else
                 {
-                    $_SESSION["logged"] = 1;
+                    $_SESSION['login'] = 1;
                     header("Location: http://localhost/monwebnangcao/obj_clone/nhom04/web/obj/html/");
                     // header("Location: sa/Untitled-1.html");
                 }
@@ -132,6 +132,7 @@ if (isset($_GET['action']) && $_GET['action'] == "login") {
 
 <body>
     <div id="login">
+        <a href="./html/index.php" style="color: white; position: fixed; margin-top: -100px;">trang chủ</a>
         <div class="container">
             <?php 
                 if(isset($_POST['action']))

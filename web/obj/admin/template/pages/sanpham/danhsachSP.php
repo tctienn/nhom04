@@ -1,3 +1,4 @@
+<a href="../../index_admin.php" style="color: black;  ">admin ></a>
 <h2>danh sách sản phẩm</h2>
 
 <?php
@@ -8,7 +9,7 @@
     
     $dbConnection = new dbConnection();
     $conn = $dbConnection->getConnection();
-    $sql = "SELECT * FROM sanpham where deleted=0 ORDER BY id ASC limit ".$trang.",4 "; // limit "offset", "limit"
+    $sql = "SELECT * FROM sanpham where deleted=1 ORDER BY id ASC limit ".$trang.",4 "; // limit "offset", "limit"
     
     $result = $conn->query($sql);
     
@@ -53,16 +54,18 @@
                                               <img src= <?= $row["img"] ?> style="width:100px ; asaspect-ratio:2/2; "  alt="">
                                            </td>
                                            <td>
-                                               <?= $row["create_at"] ?>
+                                               
+                                               <?= date('d/m/Y ',$row["create_at"])  ?>
                                            </td>
                                            <td>
-                                               <?= $row["update_at"] ?>
+                                               
+                                               <?= !empty($row["update_at"])? date('d/m/Y ',$row["update_at"]):'0/0/0'  ?>
                                            </td>
                                            <td>
                                             <a href="?sua=<?= $row["id"] ?>">sửa</a>
                                            </td>
                                            <td>
-                                            <a href="?xoa=<?= $row["id"] ?>">xóa</a>
+                                            <a href="./update/Delete.php?xoa=<?= $row["id"] ?>">xóa</a>
                                            </td>
                                        </tr>
                                   
@@ -74,7 +77,7 @@
                  
                 <br>
                 <?php
-                     $sql2 = "SELECT * FROM sanpham where deleted=0 ";
+                     $sql2 = "SELECT * FROM sanpham where deleted=1 ";
                      $sumrow = $conn->query($sql2);
                      $sumrow = mysqli_num_rows( $sumrow)/4;
                      $tranghientai=isset($_GET['trang'])?$_GET['trang']:0;

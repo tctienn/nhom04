@@ -1,4 +1,5 @@
    
+<a href="../../index_admin.php" style="color: black;  ">admin ></a>
 <?php
     // include '../../../../../functions/Upload_file.php';
     require_once ("../../../../functions/Upload_file.php"); 

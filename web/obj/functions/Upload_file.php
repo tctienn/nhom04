@@ -48,7 +48,7 @@
             return false;
         }
         // kiểm tra xem kiểu file có hợp lệ không
-        $validTypes = array("jpg","jpeg","png","web");
+        $validTypes = array("jpg","jpeg","png","webp");
         $fileType = substr($file["name"],strpos($file['name'],".")+1);
         if(!in_array($fileType,$validTypes)){ //in_array() là hàm kiểm tra một giá trị xác định có phỉ là giá trị của mảng cho trước hay không
             return false;

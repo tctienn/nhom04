@@ -7,6 +7,7 @@
     <title>Document</title>
 </head>
 <body>
+<a href="../../index_admin.php" style="color: black;  ">admin ></a>
     <?php
         // include '../../../../classes/dbConnection.php';
         require_once ("../../../../classes/dbConnection.php");

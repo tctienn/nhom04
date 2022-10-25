@@ -59,7 +59,7 @@
           </button>
         </div>
         <div>
-          <a class="navbar-brand brand-logo" href="index.html">
+          <a class="navbar-brand brand-logo" href="../../html/index.php">
             <img src="images/logo.svg" alt="logo" />
           </a>
           <a class="navbar-brand brand-logo-mini" href="index.html">
@@ -525,8 +525,8 @@
             <div class="collapse" id="auth">
               <ul class="nav flex-column sub-menu">
                 <!-- <li class="nav-item"> <a class="nav-link" href="pages/samples/login.html"> Login </a></li> -->
-                <li class="nav-item"> <a class="nav-link" href="pages/nguoidung/nguoidung.php"> danh sách tài khoản </a></li>
-              </ul>
+                <li class="nav-item"> <a class="nav-link" href="pages/nguoidung/nguoidung2.php"> danh sách tài khoản </a></li>
+              </ul>                                           
             </div>
           </li>
           <li class="nav-item nav-category">help</li>
