@@ -478,6 +478,11 @@
                 <li class="nav-item"><a class="nav-link" href="pages/sanpham/Addproduct.php">thêm sản phẩm</a></li>
               </ul>
             </div>
+            <div class="collapse" id="form-elements">
+              <ul class="nav flex-column sub-menu">
+                <li class="nav-item"><a class="nav-link" href="pages/sanpham/Danhmuc.php">danhh mục sản phẩm</a></li>
+              </ul>
+            </div>
 
           </li>
           <li class="nav-item">
