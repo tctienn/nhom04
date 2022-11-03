@@ -24,7 +24,9 @@
             <fieldset>
                 <legend>updoad file</legend>
                 <form action="?upload=file" method="post" enctype="multipart/form-data" > 
-                    <input multiple  type="file" name="file_upload[]" id=""><!-- multiple : để có thể up được nhiều ảnh , cần để name có đuôi [] để nhận dạng up nhiều ảnh nếu ko ảnh bị đè nhau -->           
+                    <input multiple  type="file" name="file_upload[]" id=""><!-- multiple : để có thể up được nhiều ảnh , cần để name có đuôi [] để nhận dạng up nhiều ảnh nếu ko ảnh bị đè nhau -->  
+                    <input type="file" name="file[]" id="" value="<?= $img?>">
+                      
                     <input type="submit" value="upload file">
                 </form>
             </fieldset>

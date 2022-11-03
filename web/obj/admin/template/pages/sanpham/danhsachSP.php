@@ -62,10 +62,11 @@
                                                <?= !empty($row["update_at"])? date('d/m/Y ',$row["update_at"]):'0/0/0'  ?>
                                            </td>
                                            <td>
-                                            <a href="?sua=<?= $row["id"] ?>">sửa</a>
+                                                <a href="./Update.php?sua=<?= $row["id"] ?>&name=<?=$row['name']?>&mota=<?=$row['mota']?>&danhmuc_id=<?=$row['danhmuc_id']?>&gia=<?=$row['gia']?>&img=<?=$row['img']?>">sửa</a>
+
                                            </td>
                                            <td>
-                                            <a href="./update/Delete.php?xoa=<?= $row["id"] ?>">xóa</a>
+                                                <a href="./update/Delete.php?xoa=<?= $row["id"] ?>">xóa</a>
                                            </td>
                                        </tr>
                                   

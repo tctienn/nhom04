@@ -37,8 +37,13 @@
             else {
                 $errors[] = "the file" . basename($file["name"])."isn't valid";
             }
+            
         }
-        return $errors;
+        $ay="/uploads/" .date('d-m-y',time())."/".$file['name'];
+        // var_dump($ay);
+        // return $errors;
+        $patchimg=$ay;
+        return $patchimg;
     }
 
     // kiểm tra tính hợp lệ 
