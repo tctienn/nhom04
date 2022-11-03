@@ -1,6 +1,20 @@
 <?php 
   session_start();
-  
+  require_once ("../../classes/dbConnection.php");
+    $dbConnection = new dbConnection();
+    $conn = $dbConnection->getConnection();
+    //đếm số lượng sản phẩm hiện tại
+    $sql = "SELECT * FROM sanpham where deleted=1 ";
+    $sumrow = $conn->query($sql);
+    $sumrow = mysqli_num_rows( $sumrow);
+    //đếm số sản phẩm đã xóa
+    $sql2 = "SELECT * FROM sanpham where deleted=0 ";
+    $daxoa = $conn->query($sql2);
+    $daxoa = mysqli_num_rows( $daxoa);
+    //user
+
+
+
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -71,7 +85,7 @@
       <div class="navbar-menu-wrapper d-flex align-items-top">
         <ul class="navbar-nav">
           <li class="nav-item font-weight-semibold d-none d-lg-block ms-0">
-            <h1 class="welcome-text">Good Morning, <span class="text-black fw-bold">name...</span></h1>
+            <h1 class="welcome-text">Good Morning, <span class="text-black fw-bold"><?=$_SESSION['username']?></span></h1>
             <h3 class="welcome-sub-text">Your performance summary this week </h3>
           </li>
         </ul>
@@ -212,7 +226,7 @@
             <div class="dropdown-menu dropdown-menu-right navbar-dropdown" aria-labelledby="UserDropdown">
               <div class="dropdown-header text-center">
                 <img class="img-md rounded-circle" src="images/faces/face8.jpg" alt="Profile image">
-                <p class="mb-1 mt-3 font-weight-semibold">Allen Moreno</p>
+                <p class="mb-1 mt-3 font-weight-semibold"><?=$_SESSION['username']?></p>
                 <p class="fw-light text-muted mb-0">allenmoreno@gmail.com</p>
               </div>
               <a class="dropdown-item"><i class="dropdown-item-icon mdi mdi-account-outline text-primary me-2"></i> My
@@ -583,9 +597,9 @@
                       <div class="col-sm-12">
                         <div class="statistics-details d-flex align-items-center justify-content-between">
                           <div>
-                            <p class="statistics-title">Bounce Rate</p>
-                            <h3 class="rate-percentage">32.53%</h3>
-                            <p class="text-danger d-flex"><i class="mdi mdi-menu-down"></i><span>-0.5%</span></p>
+                            <p class="statistics-title">số sản phẩm</p>
+                            <h3 class="rate-percentage"><?=$sumrow?></h3>
+                            <p class="text-danger d-flex"><i class="mdi mdi-menu-down"></i><span>đã xóa: <?=$daxoa?></span></p>
                           </div>
                           <div>
                             <p class="statistics-title">Page Views</p>

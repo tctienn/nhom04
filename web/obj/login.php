@@ -54,11 +54,15 @@ if (isset($_GET['action']) && $_GET['action'] == "login") {
                     // Success
                     // echo "Success";
                     $_SESSION['login'] = 1;
+                    $_SESSION['username']=$username;
                     header("Location: http://localhost/monwebnangcao/obj_clone/nhom04/web/obj/admin/template/index_admin.php");
                 } 
                 else
                 {
+                    
                     $_SESSION['login'] = 1;
+                    // echo "ui".$_SESSION['login'];exit;
+                    $_SESSION['username']=$username;
                     header("Location: http://localhost/monwebnangcao/obj_clone/nhom04/web/obj/html/");
                     // header("Location: sa/Untitled-1.html");
                 }

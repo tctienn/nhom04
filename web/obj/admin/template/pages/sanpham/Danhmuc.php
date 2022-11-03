@@ -126,5 +126,5 @@ if(isset($_GET['danhmuc'])&&$_GET['danhmuc']=='add')
 ?>
 
 
-<button type="button" onclick="tai_lai_trang()">Tải lại trang</button>
+
 

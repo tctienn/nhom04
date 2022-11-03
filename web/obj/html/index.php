@@ -1,11 +1,64 @@
 <!--  -->
 <?php
     session_start();
-    $_SESSION['login']='0';
+    $arr = array();
+    $pro = new stdclass;
+    $pro->id="";
+    $pro->cout=0;
+    if(!isset($_SESSION['cart']))
+        {           
+            $_SESSION['cart']=$arr;
+        }
+        else 
+            if(isset($_GET['cart']) && $_GET['cart']="true")
+            {
+                if(isset($_GET['id']))
+                {
+                    $a=0;
+                    for($i=0;$i<count($_SESSION['cart']);$i++)
+                    {
+                        if($_SESSION['cart'][$i]->id==$_GET['id'])
+                        {
+                            $a=1;
+                            $_SESSION['cart'][$i]->cout+=1;
+                        }
+                    }
+                    if($a!=1)
+                    {
+                        $pro->id=$_GET['id'];
+                        $pro->cout=1;
+                        array_push($_SESSION['cart'], $pro);
+                    }
+                    
+                }
+                
+            }
+
+        // echo count($_SESSION['cart']);
+        // echo var_dump($_SESSION['cart']);exit;
+
+
+    // }
+    // product();
+    // $_SESSION['cart']=$pro;
+
+    // echo $_SESSION['cart']->cout;
+    // $_SESSION['cart']=$pro->id="";
+    
+    if(!isset($_SESSION['login']))
+        $_SESSION['login']='0';
     require ('../classes/dbConnection.php');
+    if(isset($_GET['trang']))
+    {
+        $trang=$_GET['trang']*15;
+    }
+    else
+    {
+        $trang=0;
+    }
     $dbConnection = new dbConnection();
     $conn = $dbConnection->getConnection();
-    $sql = "SELECT * FROM sanpham where deleted=1 ORDER BY id ASC limit 0,15 ";
+    $sql = "SELECT * FROM sanpham where deleted=1 ORDER BY id ASC limit ".$trang.",15 ";
 
 ?>
 <!DOCTYPE html>
@@ -20,6 +73,7 @@
         integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous">
     <link rel="stylesheet" href="../css/trangchu.css">
     <script src="https://code.iconify.design/iconify-icon/1.0.0-beta.3/iconify-icon.min.js"></script>
+
     <title>Document</title>
 </head>
 
@@ -27,12 +81,13 @@
     
     <div class="container-fluid">
         <!--header-->
-        <div class="container-fluid" style="padding: 0; ">
+        <!-- <div class="container-fluid" style="padding: 0; "> -->
         <!--header-->
         <div class="container-fluid" id="header">
             <div class="container row" id="onhead">
                 <div class="col-md-8">
                     <div class="logo row">
+                        
                         <i> nhà thuốc</i>
                         <b>Long Châu</b>
                     </div>
@@ -41,18 +96,20 @@
                         
                     <iconify-icon icon="mdi:human-male-board" style="color: white; margin-top: -15px;" width="27" height="31"></iconify-icon>&nbsp;
                     <?php
+                        if(isset($_GET['login']) && $_GET['login']=='out')
+                        {
+                            $_SESSION['login']=0;
+                            
+                        }
                         if($_SESSION['login']==1)
                         {
+                            
                             ?>
                                 <form  action="./index.php?login=out" method="post"  >
                                     <input type="submit" style="margin-left: -10px; color:white ; text-decoration: none; background: none; border: none;" value="đăng xuât" >&nbsp;&nbsp;
                                 </form>
                             <?php
-                            if(isset($_GET['login']) && $_GET['login']=='out')
-                            {
-                                $_SESSION['login']=0;
-                                
-                            }
+                            
                         }
                         
                         else{
@@ -69,13 +126,15 @@
                         Tra cứu <br>Lịch sử đơn hàng
                     </p> &nbsp; &nbsp;
                     <iconify-icon icon="el:shopping-cart" style="color: white; margin-top: -15px;" width="27"
-                        height="31"></iconify-icon> &nbsp;
-                    <p style="margin-top: 6%;">
-                        Giỏ hàng
+                        height="31"></iconify-icon> <div class="number_cart"><?=count($_SESSION['cart'])?></div> &nbsp;
+                    <p style="margin-top: 6%; margin-left: -7%;">
+                        <a href="./cart/index.php" style="color: white; text-decoration: none;" >Giỏ hàng</a>
+                        
                     </p>
                 </div>
             </div>
         </div>
+        <div class="container-fluid " id="header2"></div>
 
         <!--end header-->
        
@@ -490,27 +549,30 @@
                     <iconify-icon icon="bi:fire" style="color: white; " width="15"></iconify-icon>
                 </div>
                 &nbsp;
-                Bán Chạy Nhất
+                sản phẩm
             </h5>
 
-            <div style="width: 100%; display: flex; justify-content: space-evenly; flex-wrap: wrap;">
+            <div  style="width: 100%; display: flex; justify-content: space-evenly; flex-wrap: wrap;">
             <?php
                 $result = $conn->query($sql);
     
                 if ($result->num_rows > 0) {
                     while ($row = $result->fetch_assoc()) {
                         ?>
-                             <div class="item_product2">
+                             <div id="product" class="item_product2">
                                 <img class="img_product" src="<?=$row['img']?>" alt="">
                                 <p><?= $row['name']?></p>
                                 <p>
                                     <b><?=$row['gia']?>đ</b>/hộp
                                 </p>
+                                <a href="?cart=true&id=<?=$row['id']?>"><iconify-icon class="shopping-cart" icon="el:shopping-cart" style="color: black; margin-top: -15px; float: right;" width="27"height="31"></iconify-icon> </a>
                             </div>
                         <?php
                     }
                 }
+
             ?>
+
                 <!-- <div class="item_product2">
                     <img class="img_product" src="../image/00021988-anica-phytextra-60v-7325-62ae_large.webp" alt="">
                     <p>Viên Uống Bổ Sung Canxi</p>
@@ -620,6 +682,26 @@
                 </div> -->
             <!-- </> -->
         </div>
+        <center>
+            <?php
+                $sql2 = "SELECT * FROM sanpham where deleted=1 ";
+                $sumrow = $conn->query($sql2);
+                $sumrow = mysqli_num_rows( $sumrow)/15;
+                $tranghientai=isset($_GET['trang'])?$_GET['trang']:0;
+                for($i=0;$i<$sumrow;$i++)
+                {
+                if($tranghientai !=$i )
+                    {
+                    ?><a href="?trang=<?=$i?>" style="margin: 0 4px;" ><button style="border: solid 1px black;}"><?=$i?></button></a><?php
+                    }
+                else{
+                    ?><a href="?trang=<?=$i?>" style="margin: 0 4px;" ><button style="color: white; border: solid 1px black;"><?=$i?></button></a><?php
+                }
+                
+                }
+                // echo "trang hien tai $tranghientai";
+            ?>
+        </center>
         <!--end product-->
         <!--blogs-->
         <div class="blogs row">
