@@ -37,7 +37,11 @@ Side note: I know that this style of nesting in SASS doesn't result in the most 
 }
 
 /* This is used as the traditional .clearfix class */
-.group:before, .shopping-cart:before, .column-labels:before, .product:before, .totals-item:before,
+.group:before,
+.shopping-cart:before,
+.column-labels:before,
+.product:before,
+.totals-item:before,
 .group:after,
 .shopping-cart:after,
 .column-labels:after,
@@ -47,19 +51,29 @@ Side note: I know that this style of nesting in SASS doesn't result in the most 
   display: table;
 }
 
-.group:after, .shopping-cart:after, .column-labels:after, .product:after, .totals-item:after {
+.group:after,
+.shopping-cart:after,
+.column-labels:after,
+.product:after,
+.totals-item:after {
   clear: both;
 }
 
-.group, .shopping-cart, .column-labels, .product, .totals-item {
+.group,
+.shopping-cart,
+.column-labels,
+.product,
+.totals-item {
   zoom: 1;
 }
 
 /* Apply clearfix in a few places */
 /* Apply dollar signs */
-.product .product-price:before, .product .product-line-price:before, .totals-value:before {
+/* .product .product-price:before,
+.product .product-line-price:before,
+.totals-value:before {
   content: '$';
-}
+} */
 
 /* Body/Header stuff */
 body {
@@ -86,7 +100,10 @@ label {
   margin-bottom: 15px;
   border-bottom: 1px solid #eee;
 }
-.column-labels .product-image, .column-labels .product-details, .column-labels .product-removal {
+
+.column-labels .product-image,
+.column-labels .product-details,
+.column-labels .product-removal {
   text-indent: -9999px;
 }
 
@@ -96,23 +113,29 @@ label {
   padding-bottom: 10px;
   border-bottom: 1px solid #eee;
 }
+
 .product .product-image {
   text-align: center;
 }
+
 .product .product-image img {
   width: 100px;
 }
+
 .product .product-details .product-title {
   margin-right: 20px;
   font-family: "HelveticaNeue-Medium", "Helvetica Neue Medium";
 }
+
 .product .product-details .product-description {
   margin: 5px 20px 5px 0;
   line-height: 1.4em;
 }
+
 .product .product-quantity input {
   width: 40px;
 }
+
 .product .remove-product {
   border: 0;
   padding: 4px 8px;
@@ -122,6 +145,7 @@ label {
   font-size: 12px;
   border-radius: 3px;
 }
+
 .product .remove-product:hover {
   background-color: #a44;
 }
@@ -133,17 +157,20 @@ label {
   width: 100%;
   margin-bottom: 10px;
 }
+
 .totals .totals-item label {
   float: left;
   clear: both;
   width: 79%;
   text-align: right;
 }
+
 .totals .totals-item .totals-value {
   float: right;
   width: 21%;
   text-align: right;
 }
+
 .totals .totals-item-total {
   font-family: "HelveticaNeue-Medium", "Helvetica Neue Medium";
 }
@@ -179,6 +206,7 @@ label {
     float: right;
     width: auto;
   }
+
   .product-image img {
     margin: 0 0 10px 10px;
   }
@@ -197,6 +225,7 @@ label {
   .product-quantity {
     width: 100px;
   }
+
   .product-quantity input {
     margin-left: 20px;
   }
@@ -214,6 +243,7 @@ label {
     width: 70px;
   }
 }
+
 /* Make more adjustments for phone */
 @media screen and (max-width: 350px) {
   .product-removal {
@@ -227,13 +257,14 @@ label {
     margin-top: 10px;
   }
 
-  .product .product-line-price:before {
+  /* .product .product-line-price:before {
     content: 'Item Total: $';
-  }
+  } */
 
   .totals .totals-item label {
     width: 60%;
   }
+
   .totals .totals-item .totals-value {
     width: 40%;
   }

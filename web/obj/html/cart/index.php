@@ -3,8 +3,15 @@
   require_once ("../../classes/dbConnection.php");
   $dbConnection = new dbConnection();
   $conn = $dbConnection->getConnection();
+  // var_dump($_SESSION['cart']);exit;
   
+  if(isset($_GET['remove']))
+    unset($_SESSION['cart'][$_GET['remove']]);
   
+  if(isset($_GET['chek']))
+  {
+
+  }
 
 ?>
 
@@ -19,7 +26,7 @@
 </head>
 <body>
 <!-- partial:index.partial.html -->
-<h1>Shopping Cart</h1>
+<h1><a href="../index.php" style="text-decoration: none; color: black;}" >Shopping</a> Cart</h1>
 
 <div class="shopping-cart">
 
@@ -32,7 +39,7 @@
     <label class="product-line-price">Total</label>
   </div>
 
-
+  <?php $sum=0?>
   <?php
 
   for($i=0;$i<count($_SESSION['cart']);$i++)
@@ -47,6 +54,7 @@
         <div class="product">
           <div class="product-image">
             <img src="<?=$row['img']?>">
+            
           </div>
           <div class="product-details">
             <div class="product-title"><?=$row['name']?></div>
@@ -54,21 +62,28 @@
           </div>
           <div class="product-price"><?=$row['gia']?></div>
           <div class="product-quantity">
-            <input type="number" value="2" min="1">
+            <input type="number" form="check" name="cout[<?=$i?>]" value="<?=$_SESSION['cart'][$i]->cout;?>" min="1">
+            <!-- <input type="submit"> -->
           </div>
+          
           <div class="product-removal">
-            <button class="remove-product">
-              Remove
-            </button>
+            <a href="?remove=<?=$i?>">
+              <button class="remove-product">
+                Remove
+              </button>
+            </a>
           </div>
-          <div class="product-line-price"><?=$row['gia']?></div>
+          <div class="product-line-price" ><?=$row['gia']*$_SESSION['cart'][$i]->cout?></div>
+          
         </div>
       <?php
-
+      $sum+=(float)$row['gia']*$_SESSION['cart'][$i]->cout;
     }
   }
   
   ?>
+  
+  <input type="hidden" id="hidden"  form="check" name="tong" value="0">
 
 
 
@@ -107,11 +122,16 @@
     </div> -->
     <div class="totals-item totals-item-total">
       <label>tổng số</label>
-      <div class="totals-value" id="cart-total">0</div>
+      <div class="totals-value" id="cart-total"><?=$sum?></div>
     </div>
   </div>
       
-      <button class="checkout">Checkout</button>
+      <!-- <a href="?check="> -->
+        <!-- <button class="checkout"> <input type="submit"></button> -->
+      <!-- </a> -->
+      <form id="check" action="?check" method="get">
+          <button class="checkout" onclick="ui()"> <input type="submit" style="background: none; border: none;" value="xác nhận"></button>  
+      </form>
 
 </div>
 <!-- partial -->

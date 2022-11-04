@@ -23,6 +23,7 @@ ALTER TABLE `sanpham` ADD FOREIGN KEY (`danhmuc_id`) REFERENCES `danhmuc` (`id`)
 
 ALTER TABLE `sanpham` CHANGE `create_at` `create_at` VARCHAR(100) NULL;
 ALTER TABLE `sanpham` CHANGE `update_at` `update_at` VARCHAR(100) NULL;
+ALTER TABLE `sanpham` ADD `soluong` INT(255) NOT NULL AFTER `deleted`;
 
 --  2. bảng sản phẩm
 --     id : khóa tự tăng

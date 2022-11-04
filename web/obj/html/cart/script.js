@@ -8,11 +8,20 @@ var fadeTime = 300;
 $('.product-quantity input').change(function () {
   updateQuantity(this);
 });
+// $('.checkout').click(function () {
+//   // $("#cart-subtotal").val();
+//   // alert(updateQuantity('.product-quantity input'));
+//   // alert("ui")
+//   console.log("ui");
+// });
 
+function ui() {
+  document.getElementById("hidden").value = (document.getElementById("cart-total").innerHTML);
+};
 
-$('.product-removal button').click(function () {
-  removeItem(this);
-});
+// $('.product-removal button').click(function () {
+//   removeItem(this);
+// });
 
 
 /* Recalculate cart */
