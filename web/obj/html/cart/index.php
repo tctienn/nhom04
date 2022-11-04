@@ -7,10 +7,15 @@
   
   if(isset($_GET['remove']))
     unset($_SESSION['cart'][$_GET['remove']]);
-  
-  if(isset($_GET['chek']))
+    
+  // var_dump($_SESSION['cart'][0]);exit;
+  if(isset($_GET['tong']) && $_GET['tong']>0)
   {
-
+    for($i=0; $i<count($_SESSION['cart']);$i++)
+    {
+      // var_dump($_GET["cout$i"]);exit;
+      $_SESSION['cart'][$i]->cout=$_GET["cout$i"];
+    }
   }
 
 ?>
@@ -61,8 +66,8 @@
             <p class="product-description"><?=$row['mota']?></p>
           </div>
           <div class="product-price"><?=$row['gia']?></div>
-          <div class="product-quantity">
-            <input type="number" form="check" name="cout[<?=$i?>]" value="<?=$_SESSION['cart'][$i]->cout;?>" min="1">
+          <div class="product-quantity"><?php $as="cout". $i; ?>
+            <input type="number" form="check" name="<?=$as?>" value="<?=$_SESSION['cart'][$i]->cout;?>" min="1">
             <!-- <input type="submit"> -->
           </div>
           
@@ -129,7 +134,7 @@
       <!-- <a href="?check="> -->
         <!-- <button class="checkout"> <input type="submit"></button> -->
       <!-- </a> -->
-      <form id="check" action="?check" method="get">
+      <form id="check" action="" method="get">
           <button class="checkout" onclick="ui()"> <input type="submit" style="background: none; border: none;" value="xác nhận"></button>  
       </form>
 
