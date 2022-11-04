@@ -1,6 +1,7 @@
 <!--  -->
 <?php
     session_start();
+    $_SESSION['loc']="";
     $arr = array();
     $pro = new stdclass;
     $pro->id="";
@@ -56,10 +57,37 @@
     {
         $trang=0;
     }
-    $dbConnection = new dbConnection();
-    $conn = $dbConnection->getConnection();
-    $sql = "SELECT * FROM sanpham where deleted=1 ORDER BY id ASC limit ".$trang.",15 ";
 
+     // hàm lọc
+     $loc="";
+     function loc(){
+        if(isset($_GET['loc']))
+        {
+            
+            
+            return $loc="and danhmuc.id=".$_GET['loc'];
+            // var_dump($loc);
+        }
+        else
+        {
+            // echo "uiii";
+            return $loc="";
+        }
+    }
+    // $loc="and danhmuc.id=".$_GET['loc'];
+    $dbConnection = new dbConnection();
+    $conn = $dbConnection->getConnection(); $loc=loc();
+    if(isset($_GET['loc']))
+    {
+        $_SESSION['loc']="&loc=".$_GET['loc'];
+    }
+    
+    // $sql = "SELECT * FROM sanpham where deleted=1 ORDER BY id ASC limit ".$trang.",15 ";
+    $sql ="SELECT sanpham.id as sp_id , sanpham.name as sp_name, sanpham.mota as sp_mota , sanpham.gia as sp_gia,sanpham.img as img, danhmuc.name as cat_name  ,  sanpham.soluong sp_soluong  FROM sanpham , danhmuc WHERE sanpham.danhmuc_id = danhmuc.id AND deleted=1 and deleted=1 ".$loc." ORDER BY sanpham.id ASC limit ".$trang.",15 ";
+    
+
+
+   
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -140,7 +168,7 @@
        
         <!--natbar-->
         <nav class="navbar navbar-expand-lg"
-            style="  --bs-bg-opacity: 0; z-index: 2; background-color: white; box-shadow: 0 2px 15px -10px black;">
+            style="  --bs-bg-opacity: 0; z-index: 2; background-color: white; box-shadow: 0 2px 15px -10px black; width: 100%; position: fixed;">
             <div class="container" style="width: 80%;">
 
                 <div class="collapse navbar-collapse" id="navbarNavDropdown">
@@ -169,14 +197,12 @@
                                         <li><a class="dropdown-item" href="#"><img id="img_mt"
                                                     src="../image/cai-thien-tang-cuong-chuc-nang.webp" alt=""> Cải thiện
                                                 tăng cường chức năng</a></li>
-                                        <li><a class="dropdown-item" href="#"><img id="img_mt"
-                                                    src="../image/thao-duoc-thuc-pham-tu-nhien.webp" alt=""> Thảo dược
-                                                và thực phẩm tự nhiên</a></li>
-                                        <li><a class="dropdown-item" href="#"><img id="img_mt"
-                                                    src="../image/lam-dep.webp" alt=""> Hỗ trợ làm đẹp</a></li>
-                                        <li><a class="dropdown-item" href="#"><img id="img_mt"
-                                                    src="../image/vitamin-va-khoang-chat.webp" alt=""> Vitamin & khoáng
-                                                chất</a></li>
+                                        <li><a class="dropdown-item" href="?loc=19"><img id="img_mt"
+                                                    src="../image/thao-duoc-thuc-pham-tu-nhien.webp" alt=""> Thảo dược.</a></li>
+                                        <li><a class="dropdown-item" href="?loc=18"><img id="img_mt"
+                                                    src="../image/lam-dep.webp" alt=""> Hỗ trợ làm đẹp.</a></li>
+                                        <li><a class="dropdown-item" href="?loc=2"><img id="img_mt"
+                                                    src="../image/vitamin-va-khoang-chat.webp" alt=""> thuốc bổ. </a></li>
                                         <li><a class="dropdown-item" href="#"><img id="img_mt"
                                                     src="../image/dinh-duong.webp" alt=""> Dinh dưỡng</a></li>
 
@@ -213,8 +239,7 @@
                                                     src="../image/cai-thien-tang-cuong-chuc-nang.webp" alt=""> Cải thiện
                                                 tăng cường chức năng</a></li>
                                         <li><a class="dropdown-item" href="#"><img id="img_mt"
-                                                    src="../image/thao-duoc-thuc-pham-tu-nhien.webp" alt=""> Thảo dược
-                                                và thực phẩm tự nhiên</a></li>
+                                                    src="../image/thao-duoc-thuc-pham-tu-nhien.webp" alt=""> Thảo dược.</a></li>
                                         <li><a class="dropdown-item" href="#"><img id="img_mt"
                                                     src="../image/lam-dep.webp" alt=""> Hỗ trợ làm đẹp</a></li>
                                         <li><a class="dropdown-item" href="#"><img id="img_mt"
@@ -549,10 +574,10 @@
                     <iconify-icon icon="bi:fire" style="color: white; " width="15"></iconify-icon>
                 </div>
                 &nbsp;
-                sản phẩm
+                sản phẩm <?php if(isset($_GET['loc'])){echo "lọc theo id danh mục: ". $_GET['loc'];}?>
             </h5>
 
-            <div  style="width: 100%; display: flex; justify-content: space-evenly; flex-wrap: wrap;">
+            <div  style="width: 100%; display: flex; justify-content: space-evenly; flex-wrap: wrap; ">
             <?php
                 $result = $conn->query($sql);
     
@@ -560,12 +585,13 @@
                     while ($row = $result->fetch_assoc()) {
                         ?>
                              <div id="product" class="item_product2">
-                                <img class="img_product" src="<?=$row['img']?>" alt="">
-                                <p><?= $row['name']?></p>
+                                
+                                <div class="imgproduct"><img class="img_product" src="<?=$row['img']?>" alt=""></div>
+                                <input type="text" style="border: none;" readonly value="<?= $row['sp_name']?>">
                                 <p>
-                                    <b><?=$row['gia']?>đ</b>/hộp
+                                    <b><?=$row['sp_gia']?>đ</b>/hộp
                                 </p>
-                                <a href="?cart=true&id=<?=$row['id']?>"><iconify-icon class="shopping-cart" icon="el:shopping-cart" style="color: black; margin-top: -15px; float: right;" width="27"height="31"></iconify-icon> </a>
+                                <a href="?cart=true&id=<?=$row['sp_id']?>"><iconify-icon class="shopping-cart" icon="el:shopping-cart" style="color: black; margin-top: -15px; float: right;" width="27"height="31"></iconify-icon> </a>
                             </div>
                         <?php
                     }
@@ -683,6 +709,7 @@
             <!-- </> -->
         </div>
         <center>
+            <br>
             <?php
                 $sql2 = "SELECT * FROM sanpham where deleted=1 ";
                 $sumrow = $conn->query($sql2);
@@ -692,10 +719,10 @@
                 {
                 if($tranghientai !=$i )
                     {
-                    ?><a href="?trang=<?=$i?>" style="margin: 0 4px;" ><button style="border: solid 1px black;}"><?=$i?></button></a><?php
+                    ?><a href="?trang=<?=$i?><?=$_SESSION['loc']?>" style="margin: 0 4px;" ><button style="border: solid 1px black;}"><?=$i?></button></a><?php
                     }
                 else{
-                    ?><a href="?trang=<?=$i?>" style="margin: 0 4px;" ><button style="color: white; border: solid 1px black;"><?=$i?></button></a><?php
+                    ?><a href="?trang=<?=$i?><?=$_SESSION['loc']?>" style="margin: 0 4px;" ><button style="color: white; border: solid 1px black;"><?=$i?></button></a><?php
                 }
                 
                 }

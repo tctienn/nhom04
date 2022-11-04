@@ -19,7 +19,7 @@ if(isset($_GET['id_update']))
         <hr>
         <form action="./Danhmuc.php?update=true&id_update=<?=$id_update?>" method="POST">
              <lable>id</lable>
-            <input type="text" name="id" value="<?=$id_update?>"><br>
+            <input disabled type="text" name="id" value="<?=$id_update?>"><br>
             <lable>tên danh mục</lable>
             <input type="text" name="name">
             <input type="submit" value="sửa">

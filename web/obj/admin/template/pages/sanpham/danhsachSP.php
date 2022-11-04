@@ -26,6 +26,7 @@
                         <th>img</th>
                         <th>thời gian tạo</th>
                         <th>thời gian cập nhật</th>
+                        <th>số lượng</th>
                         <th colspan=2 >chức năng</th>
                     </tr>
                 <?php
@@ -60,6 +61,9 @@
                                            <td>
                                                
                                                <?= !empty($row["update_at"])? date('d/m/Y ',$row["update_at"]):'0/0/0'  ?>
+                                           </td>
+                                           <td>
+                                            <?=$row['soluong']?>
                                            </td>
                                            <td>
                                                 <a href="./Update.php?sua=<?= $row["id"] ?>&name=<?=$row['name']?>&mota=<?=$row['mota']?>&danhmuc_id=<?=$row['danhmuc_id']?>&gia=<?=$row['gia']?>&img=<?=$row['img']?>">sửa</a>

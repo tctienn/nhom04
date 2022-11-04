@@ -111,7 +111,7 @@
     </div>
     <div class="product-line-price">45.99</div>
   </div> -->
-
+  <a href="../index.php"><button style="float: left; border-radius: 21px;" class="checkout" >quay lại trang mua hàng</button></a>
   <div class="totals">
     <div class="totals-item">
       <label>tổng</label>
@@ -129,6 +129,8 @@
       <label>tổng số</label>
       <div class="totals-value" id="cart-total"><?=$sum?></div>
     </div>
+    
+
   </div>
       
       <!-- <a href="?check="> -->

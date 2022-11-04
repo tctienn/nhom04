@@ -40,23 +40,75 @@
     $baseURL='http://localhost/monwebnangcao/obj_clone/nhom04/web/obj/admin/template/pages/forms/';
     // var_dump($baseURL);exit;
         $allFiless = getAllFiles();
+        ?><ul id="gallery" style="display: flex; justify-content: space-evenly; flex-wrap: wrap;}" ><?php
         if(!empty($allFiless))
         {
             foreach($allFiless as $file)
             {
                 // var_dump($file);exit;
                 ?>
-                    <ul id="gallery">
-                        <li style="width: 500px; aspect-ratio: 2/2; border: solid 1px black;">
+                    
+                        <li style="width: 200px; aspect-ratio: 2/2; border: solid 1px black; list-style-type: none;">
                         <?php $ss= $baseURL.$file ; ?>
                             <img style="width: 100%; height:80%; " src="<?= $file?>">
                             <input style="width:100%" type="text" name="" value=<?= $ss?> id="">
                             <a href="./delete_img.php?url=<?=urldecode($file)?>"> xóa </a>
                         </li>
-                    </ul>
+                    
                 <?php
             }
         }
         
 
     ?>
+             </ul>
+
+
+
+<?php
+    function getAllFiles2(){
+        $allFiles = array();
+        $allDirs =glob('../sanpham/uploads/*');
+        $a=0;
+        foreach($allDirs as $dir){
+            // echo "<pre>", var_dump($dir.'/*'), "</pre>";exit;
+            $allFiles = array_merge($allFiles, glob($dir . "/*"));
+            $a++;
+
+        }
+        // echo "asadwd " .$a;
+        // var_dump($allFiles);
+        return $allFiles;
+    }
+?>
+
+
+
+    <h2>Danh sách ảnh sản phẩm</h2>
+    <?php
+    // $baseURL = 'http://' . $_SERVER['HTTP_HOST'] . $_SERVER['REQUEST_URI'];
+    $baseURL='http://localhost/monwebnangcao/obj_clone/nhom04/web/obj/admin/template/pages/forms/';
+    // var_dump($baseURL);exit;
+        $allFiless = getAllFiles2();
+        ?><ul id="gallery" style="display: flex; justify-content: space-evenly; flex-wrap: wrap;}" ><?php
+        if(!empty($allFiless))
+        {
+            foreach($allFiless as $file)
+            {
+                // var_dump($file);exit;
+                ?>
+                    
+                        <li style="width: 200px; aspect-ratio: 2/2; border: solid 1px black; list-style-type: none;">
+                        <?php $ss= $baseURL.$file ; ?>
+                            <img style="width: 100%; height:80%; " src="<?= $file?>">
+                            <input style="width:100%" type="text" name="" value=<?= $ss?> id="">
+                            <a href="./delete_img.php?url=<?=urldecode($file)?>"> xóa </a>
+                        </li>
+                    
+                <?php
+            }
+        }
+        
+
+    ?>
+             </ul>

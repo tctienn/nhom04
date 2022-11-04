@@ -12,6 +12,17 @@
     $daxoa = $conn->query($sql2);
     $daxoa = mysqli_num_rows( $daxoa);
     //user
+    $sql4 = "SELECT * FROM user ";
+    $user_c = $conn->query($sql4);
+    $user_c = mysqli_num_rows( $user_c);
+        // admin
+        $sql5 = "SELECT * FROM user where is_admin=1  ";
+        $admin_c = $conn->query($sql5);
+        $admin_c = mysqli_num_rows( $admin_c);
+    //đếm số danh mục
+    $sql3 = "SELECT * FROM danhmuc ";
+    $dm_cout = $conn->query($sql3);
+    $dm_cout = mysqli_num_rows( $dm_cout);
 
 
 
@@ -602,14 +613,14 @@
                             <p class="text-danger d-flex"><i class="mdi mdi-menu-down"></i><span>đã xóa: <?=$daxoa?></span></p>
                           </div>
                           <div>
-                            <p class="statistics-title">Page Views</p>
-                            <h3 class="rate-percentage">7,682</h3>
-                            <p class="text-success d-flex"><i class="mdi mdi-menu-up"></i><span>+0.1%</span></p>
+                            <p class="statistics-title">số danh mục</p>
+                            <h3 class="rate-percentage"><?=$dm_cout?></h3>
+                            <!-- <p class="text-success d-flex"><span></span></p> -->
                           </div>
                           <div>
-                            <p class="statistics-title">New Sessions</p>
-                            <h3 class="rate-percentage">68.8</h3>
-                            <p class="text-danger d-flex"><i class="mdi mdi-menu-down"></i><span>68.8</span></p>
+                            <p class="statistics-title">số tài khoản</p>
+                            <h3 class="rate-percentage"><?=$user_c?></h3>
+                            <p class="text-danger d-flex"><i class="mdi mdi-menu-down"></i><span>admin : <?=$admin_c?></span></p>
                           </div>
                           <div class="d-none d-md-block">
                             <p class="statistics-title">Avg. Time on Site</p>

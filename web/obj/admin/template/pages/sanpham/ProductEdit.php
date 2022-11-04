@@ -14,12 +14,13 @@
       
     if(isset($_GET['action']) && $_GET['action']== 'addpro')
     {  
-        if(isset($_POST['name']) && isset($_POST['mota']) && isset($_POST['danhmuc'])  && isset($_POST['gia']) &&  $_POST['name']!="" && $_POST['mota']!="" && $_POST['danhmuc']!=""  && $_POST['gia']!="" )
+        if(isset($_POST['name']) && isset($_POST['mota']) && isset($_POST['danhmuc'])  && isset($_POST['gia']) && isset($_POST['soluong']) &&  $_POST['name']!="" && $_POST['mota']!="" && $_POST['danhmuc']!=""  && $_POST['gia']!="" )
         {
             $name=$_POST['name'];
             $mota=$_POST['mota'];
             $danhmuc_id=$_POST['danhmuc'];
             $gia=$_POST['gia'];
+            $soluong= $_POST['soluong'];
 
             if((int)$_POST['gia']){
                
@@ -40,7 +41,7 @@
             $conn = $dbConnection->getConnection();
             try {
                 $time=time();
-                $result = mysqli_query($conn,"INSERT INTO `sanpham` (`id`, `name`, `mota`, `danhmuc_id`, `gia`,`img`,`create_at`,`update_at`,`deleted`) VALUES ('', '$name', '$mota', '$danhmuc_id','$gia','$img', '".time()."','','1')");
+                $result = mysqli_query($conn,"INSERT INTO `sanpham` (`id`, `name`, `mota`, `danhmuc_id`, `gia`,`img`,`create_at`,`update_at`,`deleted`,`soluong`) VALUES ('', '$name', '$mota', '$danhmuc_id','$gia','$img', '".time()."','','1','$soluong')");
                 // UPDATE `sanpham` SET `deleted` = '1' WHERE `sanpham`.`id` = 49;
                 $error=false;
                 
