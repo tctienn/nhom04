@@ -55,6 +55,7 @@ if (isset($_GET['action']) && $_GET['action'] == "login") {
                     // echo "Success";
                     $_SESSION['login'] = 1;
                     $_SESSION['username']=$username;
+                    $_SESSION['gmail']=$row['gmail'];
                     header("Location: http://localhost/monwebnangcao/obj_clone/nhom04/web/obj/admin/template/index_admin.php");
                 } 
                 else

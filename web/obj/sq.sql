@@ -25,6 +25,9 @@ ALTER TABLE `sanpham` CHANGE `create_at` `create_at` VARCHAR(100) NULL;
 ALTER TABLE `sanpham` CHANGE `update_at` `update_at` VARCHAR(100) NULL;
 ALTER TABLE `sanpham` ADD `soluong` INT(255) NOT NULL AFTER `deleted`;
 
+-- phải có bảng user
+ALTER TABLE `user` ADD `gmail` VARCHAR(50) NOT NULL AFTER `create_time`;
+
 --  2. bảng sản phẩm
 --     id : khóa tự tăng
 --     name: string -> 350

@@ -86,6 +86,10 @@
     $sql ="SELECT sanpham.id as sp_id , sanpham.name as sp_name, sanpham.mota as sp_mota , sanpham.gia as sp_gia,sanpham.img as img, danhmuc.name as cat_name  ,  sanpham.soluong sp_soluong  FROM sanpham , danhmuc WHERE sanpham.danhmuc_id = danhmuc.id AND deleted=1 and deleted=1 ".$loc." ORDER BY sanpham.id ASC limit ".$trang.",15 ";
     
 
+    //lấy slide
+    
+    
+
 
    
 ?>
@@ -113,14 +117,14 @@
         <!--header-->
         <div class="container-fluid" id="header">
             <div class="container row" id="onhead">
-                <div class="col-md-8">
+                <div class="col-md-7">
                     <div class="logo row">
                         
                         <i> nhà thuốc</i>
                         <b>Long Châu</b>
                     </div>
                 </div>
-                <div class="col-md-4" id="right_head">
+                <div class="col-md-5" id="right_head">
                         
                     <iconify-icon icon="mdi:human-male-board" style="color: white; margin-top: -15px;" width="27" height="31"></iconify-icon>&nbsp;
                     <?php
@@ -157,6 +161,10 @@
                         height="31"></iconify-icon> <div class="number_cart"><?=count($_SESSION['cart'])?></div> &nbsp;
                     <p style="margin-top: 6%; margin-left: -7%;">
                         <a href="./cart/index.php" style="color: white; text-decoration: none;" >Giỏ hàng</a>
+                        
+                    </p>
+                    <p style="">
+                        <a href="./cart/index.php" style="color: white; text-decoration: none;" ><?=$_SESSION['username']?></a>
                         
                     </p>
                 </div>
@@ -395,7 +403,7 @@
                                 </p>
                             </div>
 
-                            <div class="item_product col-md-2 ">
+                            <!-- <div class="item_product col-md-2 ">
                                 <img class="img_slide" src="../image/00008138-xisat-kid-75ml-8547-5bf4_large.webp"
                                     alt="">
                                 <p>bộ vệ sinh mũi</p>
@@ -429,7 +437,7 @@
                                 <p>
                                     <b>399.000đ</b>/chai
                                 </p>
-                            </div>
+                            </div> -->
                         </div>
                     </div>
 
