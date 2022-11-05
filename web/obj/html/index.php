@@ -87,7 +87,11 @@
     
 
     //lấy slide
+    $slide_sql="SELECT sanpham.id as sp_id , sanpham.name as sp_name, sanpham.mota as sp_mota , sanpham.gia as sp_gia,sanpham.img as img, danhmuc.name as cat_name  ,  sanpham.soluong sp_soluong  FROM sanpham , danhmuc WHERE sanpham.danhmuc_id = danhmuc.id AND deleted=1 and danhmuc.name= 'thuốc bổ' ORDER BY sanpham.id ASC  limit 5 ";
+    $slide_result = $conn->query($slide_sql);
     
+    
+
     
 
 
@@ -158,15 +162,16 @@
                         Tra cứu <br>Lịch sử đơn hàng
                     </p> &nbsp; &nbsp;
                     <iconify-icon icon="el:shopping-cart" style="color: white; margin-top: -15px;" width="27"
-                        height="31"></iconify-icon> <div class="number_cart"><?=count($_SESSION['cart'])?></div> &nbsp;
+                        height="31"></iconify-icon> <div class="number_cart"><b><?=count($_SESSION['cart'])?></b></div> &nbsp;
                     <p style="margin-top: 6%; margin-left: -7%;">
                         <a href="./cart/index.php" style="color: white; text-decoration: none;" >Giỏ hàng</a>
-                        
                     </p>
+
                     <p style="">
-                        <a href="./cart/index.php" style="color: white; text-decoration: none;" ><?=$_SESSION['username']?></a>
+                        <a href="#" style="color: white; text-decoration: none;" ><?=$_SESSION['username']?></a>
                         
                     </p>
+                    
                 </div>
             </div>
         </div>
@@ -393,16 +398,24 @@
                     <div class="carousel-item active">
                         <!-- <img src="" class="d-block w-100" alt="..."> -->
                         <div class="onslide  row">
-                            <!-- <img src="" class="d-block w-100" alt="..."> -->
-                            <div class="item_product col-md-2 ">
-                                <img class="img_slide" src="../image/00008138-xisat-kid-75ml-8547-5bf4_large.webp"
-                                    alt="">
-                                <p>bộ vệ sinh mũi</p>
-                                <p>
-                                    <b>399.000đ</b>/chai
-                                </p>
-                            </div>
-
+                        <!-- <img src="" class="d-block w-100" alt="..."> -->
+                        <?php
+                            if ($slide_result->num_rows > 0) 
+                                while ($row = $slide_result->fetch_assoc()){
+                                    ?>
+                                        
+                                        <div class="item_product col-md-2 ">
+                                            <img class="img_slide" src="../image/00008138-xisat-kid-75ml-8547-5bf4_large.webp"
+                                                alt="">
+                                            <p><?=$row['sp_name']?></p>
+                                            <p>
+                                                <b><?=$row['sp_gia']?></b>/chai
+                                            </p>
+                                        </div>
+                                    <?php
+                                }
+                        ?>
+                        
                             <!-- <div class="item_product col-md-2 ">
                                 <img class="img_slide" src="../image/00008138-xisat-kid-75ml-8547-5bf4_large.webp"
                                     alt="">
