@@ -7,7 +7,8 @@
             // echo "<pre>", var_dump($dir.'/*'), "</pre>";exit;
             $allFiles = array_merge($allFiles, glob($dir . "/*"));
             $a++;
-
+            
+            
         }
         // echo "asadwd " .$a;
         // var_dump($allFiles);
