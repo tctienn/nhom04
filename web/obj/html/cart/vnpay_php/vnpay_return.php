@@ -74,7 +74,7 @@
                 </div> 
                 <div class="form-group">
                     <label >Thời gian thanh toán:</label>
-                    <label><?php echo $_GET['vnp_PayDate'] ?></label>
+                    <label><?php echo $_GET['vnp_PayDate']; date("m/d/y", $_GET['vnp_PayDate']) ?></label>
                 </div> 
                 <div class="form-group">
                     <label >Kết quả:</label>
@@ -82,7 +82,11 @@
                         <?php
                         if ($secureHash == $vnp_SecureHash) {
                             if ($_GET['vnp_ResponseCode'] == '00') {
-                                echo "<span style='color:blue'>GD Thanh cong</span>";
+                                echo "<span style='color:blue'><a href='../../index.php'>GD Thanh cong</a></span>";
+                                require_once ("../../../classes/dbConnection.php");
+                                require_once ("../../../functions/Thanhtoan.php");
+                                thanhtoan();
+                                // echo $_POST['card_number_mask'];
                             } else {
                                 echo "<span style='color:red'>GD Khong thanh cong</span>";
                             }

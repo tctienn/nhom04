@@ -52,7 +52,7 @@
                         <select name="bank_code" id="bank_code" class="form-control">
                             <option value="">Không chọn</option>
                             <option value="NCB"> Ngan hang NCB</option>
-                            <option value="AGRIBANK"> Ngan hang Agribank</option>
+                            <!-- <option value="AGRIBANK"> Ngan hang Agribank</option>
                             <option value="SCB"> Ngan hang SCB</option>
                             <option value="SACOMBANK">Ngan hang SacomBank</option>
                             <option value="EXIMBANK"> Ngan hang EximBank</option>
@@ -72,7 +72,7 @@
                             <option value="ACB"> Ngan hang ACB</option>
                             <option value="OCB"> Ngan hang OCB</option>
                             <option value="IVB"> Ngan hang IVB</option>
-                            <option value="VISA"> Thanh toan qua VISA/MASTER</option>
+                            <option value="VISA"> Thanh toan qua VISA/MASTER</option> -->
                         </select>
                     </div>
                     <div class="form-group">

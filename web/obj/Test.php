@@ -1,18 +1,27 @@
 <?php
+session_start();
 error_reporting(E_ALL & ~E_NOTICE & ~E_DEPRECATED);
 date_default_timezone_set('Asia/Ho_Chi_Minh');
+if(!isset($_SESSION['tong']))
+    $_SESSION['tong']=0;
+$_SESSION['tong']= (int) $_SESSION['tong'];
+
+// $a=0;
+// var_dump($_SESSION['tong']);
+// var_dump($a);exit;
 
 $vnp_Url = "https://sandbox.vnpayment.vn/paymentv2/vpcpay.html";  // trang thanh toán
 // $vnp_Returnurl = "http://localhost/vnpay_php/vnpay_return.php";  // trang thanh toán thành công (cần đặt foder vnpay_tại địa chỉ https://localhost/(ở đây) hoặc chỉnh lại đường đẫn tới đúng foder đang được đặt)
-$vnp_Returnurl = "http://localhost/vnpay_php/vnpay_return.php"; 
+$vnp_Returnurl = "http://localhost/monwebnangcao/obj_clone/nhom04/web/obj/html/cart/vnpay_php/vnpay_return.php"; 
+
 $vnp_TmnCode = "C8OTHLDB";//Mã website tại VNPAY 
 $vnp_HashSecret = "PBNNCSQZYCDONAIBQFNYPFYUZRMGSGQX"; //Chuỗi bí mật
 
-///<đã dùng: 1256,12256,122256>
-$vnp_TxnRef = 122256;//$_POST['order_id']; (thông báo lỗi Dữ liệu gửi sang không đúng định dạng sẽ xuất hiện nếu giá trị biến này bị trùng với giao dịch trước nó) //Mã đơn hàng. Trong thực tế Merchant cần insert đơn hàng vào DB và gửi mã này sang VNPAY
+///<đã dùng: 1256,12256,122256,1222256>
+$vnp_TxnRef =   date("YmdHis") ;//$_POST['order_id']; (thông báo lỗi Dữ liệu gửi sang không đúng định dạng sẽ xuất hiện nếu giá trị biến này bị trùng với giao dịch trước nó) //Mã đơn hàng. Trong thực tế Merchant cần insert đơn hàng vào DB và gửi mã này sang VNPAY
 $vnp_OrderInfo =  "thanh toán đơn hàng"; //$_POST['order_desc'];
 $vnp_OrderType =  "billpayment"; //$_POST['order_type'];
-$vnp_Amount = 20000*100;//$_POST['amount'] * 100;
+$vnp_Amount =  $_SESSION['tong']*100;//$_POST['amount'] * 100;
 $vnp_Locale = 'vn';//$_POST['language'];
 $vnp_BankCode =  'NCB' ;//$_POST['bank_code'];
 $vnp_IpAddr = $_SERVER['REMOTE_ADDR'];

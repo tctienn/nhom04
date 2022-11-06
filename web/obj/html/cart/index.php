@@ -1,6 +1,11 @@
 <?php
   session_start();
+  if(!isset($_SESSION['tong']))
+    $_SESSION['tong']=0;
+  
   require_once ("../../classes/dbConnection.php");
+  // require_once ("../../functions/Thanhtoan.php");
+  // thanhtoan();exit;
   $dbConnection = new dbConnection();
   $conn = $dbConnection->getConnection();
   // var_dump($_SESSION['cart']);exit;
@@ -15,9 +20,11 @@
     {
       // var_dump($_GET["cout$i"]);exit;
       $_SESSION['cart'][$i]->cout=$_GET["cout$i"];
+      $_SESSION['tong']=$_GET['tong'];
+
     }
   }
-
+  // var_dump($_SESSION['cart']);
 ?>
 
 <!DOCTYPE html>
@@ -65,7 +72,7 @@
             <div class="product-title"><?=$row['name']?></div>
             <p class="product-description"><?=$row['mota']?></p>
           </div>
-          <div class="product-price"><?=$row['gia']?></div>
+          <div class="product-price"> <?= number_format($row["gia"],0,",",".");  ?>đ</div>
           <div class="product-quantity"><?php $as="cout". $i; ?>
             <input type="number" form="check" name="<?=$as?>" value="<?=$_SESSION['cart'][$i]->cout;?>" min="1">
             <!-- <input type="submit"> -->
@@ -77,8 +84,8 @@
                 Remove
               </button>
             </a>
-          </div>
-          <div class="product-line-price" ><?=$row['gia']*$_SESSION['cart'][$i]->cout?></div>
+          </div> 
+          <div class="product-line-price" ><?= number_format(($row['gia']*$_SESSION['cart'][$i]->cout),0,",",".");  ?>đ</div>
           
         </div>
       <?php
@@ -115,7 +122,7 @@
   <div class="totals">
     <div class="totals-item">
       <label>tổng</label>
-      <div class="totals-value" id="cart-subtotal">0</div>
+      <div class="totals-value" id="cart-subtotal"><?= number_format($sum,0,",","."); ?> đ</div>
     </div>
     <!-- <div class="totals-item">
       <label>Tax (5%)</label>
@@ -127,7 +134,7 @@
     </div> -->
     <div class="totals-item totals-item-total">
       <label>tổng số</label>
-      <div class="totals-value" id="cart-total"><?=$sum?></div>
+      <div class="totals-value" id="cart-total"><?= $sum ?></div>
     </div>
     
 
@@ -148,3 +155,5 @@
 
 </body>
 </html>
+
+
