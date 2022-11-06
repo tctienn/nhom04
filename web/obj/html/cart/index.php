@@ -139,7 +139,9 @@
       <form id="check" action="" method="get">
           <button class="checkout" onclick="ui()"> <input type="submit" style="background: none; border: none;" value="xác nhận"></button>  
       </form>
-
+      <form action="../../Test.php" method="post">
+        <button type="submit" name="redirect">thanh toán</button>
+      </form>
 </div>
 <!-- partial -->
   <script src='//cdnjs.cloudflare.com/ajax/libs/jquery/2.1.3/jquery.min.js'></script><script  src="./script.js"></script>

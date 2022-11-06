@@ -1,6 +1,11 @@
 <!--  -->
 <?php
     session_start();
+    if(!isset($_SESSION['username']) || !isset($_SESSION['gmail'] ))
+    {
+        $_SESSION['username']="";
+        $_SESSION['gmail']="";
+    }
     $_SESSION['loc']="";
     $arr = array();
     $pro = new stdclass;
@@ -167,8 +172,9 @@
                         <a href="./cart/index.php" style="color: white; text-decoration: none;" >Giỏ hàng</a>
                     </p>
 
-                    <p style="">
-                        <a href="#" style="color: white; text-decoration: none;" ><?=$_SESSION['username']?></a>
+                    <p style="color: white;  margin-left: 10px; display: flex; flex-direction: column;">
+                        <iconify-icon icon="healthicons:ui-user-profile" style="color: white;" width="30" height="30"></iconify-icon>
+                        <a href="#" style="color: white; text-decoration: none; margin:auto; margin-top:-5px;margin-top: 10px;" ><?=$_SESSION['username']?></a>
                         
                     </p>
                     
