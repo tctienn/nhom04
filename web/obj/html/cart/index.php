@@ -24,6 +24,11 @@
 
     }
   }
+  else
+  {
+    if(isset($_SESSION['tong']) && isset($_GET['tong']))
+      $_SESSION['tong']=$_GET['tong'];
+  }
   // var_dump($_SESSION['cart']);
 ?>
 
@@ -144,16 +149,23 @@
         <!-- <button class="checkout"> <input type="submit"></button> -->
       <!-- </a> -->
       <form id="check" action="" method="get">
-          <button class="checkout" onclick="ui()"> <input type="submit" style="background: none; border: none;" value="xác nhận"></button>  
+          <button class="checkout" style=" border-radius: 21px;" onclick="ui()"> <input type="submit" style="background: none; border: none;" value="xác nhận"></button>  
       </form>
-      <form action="../../Test.php" method="post">
-        <button type="submit" name="redirect">thanh toán</button>
-      </form>
+      <br>
+      <?php
+        
+        if(isset($_GET['tong']))
+        {
+          ?>
+            <form action="../../Test.php" method="post">
+              <button type="submit" id="ui" style="  clear: right; float: right; border-radius: 21px;" class="checkout" name="redirect">thanh toán</button>
+            </form>
+          <?php
+        }
+      ?>
 </div>
 <!-- partial -->
   <script src='//cdnjs.cloudflare.com/ajax/libs/jquery/2.1.3/jquery.min.js'></script><script  src="./script.js"></script>
 
 </body>
 </html>
-
-

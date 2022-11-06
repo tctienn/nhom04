@@ -6,6 +6,7 @@ if(!isset($_SESSION['tong']))
     $_SESSION['tong']=0;
 $_SESSION['tong']= (int) $_SESSION['tong'];
 
+// var_dump($_SESSION['tong']);exit;
 // $a=0;
 // var_dump($_SESSION['tong']);
 // var_dump($a);exit;

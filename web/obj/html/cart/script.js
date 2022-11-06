@@ -17,6 +17,7 @@ $('.product-quantity input').change(function () {
 
 function ui() {
   document.getElementById("hidden").value = (document.getElementById("cart-total").innerHTML);
+  // document.getElementById("ui").style.display = "  none";
 };
 
 // $('.product-removal button').click(function () {

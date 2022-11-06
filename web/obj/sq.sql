@@ -39,6 +39,7 @@ CREATE TABLE `hoadon` (
   `code_bank` varchar(255), -- mã ngân hàng
   `time` datetime
 );
+ALTER TABLE `hoadon` CHANGE `time` `time` VARCHAR(20) NULL DEFAULT NULL;
 
 
 --  2. bảng sản phẩm

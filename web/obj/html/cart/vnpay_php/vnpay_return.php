@@ -74,7 +74,8 @@
                 </div> 
                 <div class="form-group">
                     <label >Thời gian thanh toán:</label>
-                    <label><?php echo $_GET['vnp_PayDate']; date("m/d/y", $_GET['vnp_PayDate']) ?></label>
+                    <label><?php echo $_GET['vnp_PayDate'] . "  "; ?></label>
+                     
                 </div> 
                 <div class="form-group">
                     <label >Kết quả:</label>

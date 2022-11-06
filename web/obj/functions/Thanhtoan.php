@@ -30,11 +30,12 @@
                 }
             }
             // INSERT INTO `hoadon` (`id`, `order_id`, `note`, `ma_gd`, `money`, `code_bank`, `time`) VALUES (NULL, '1', '1', '1', '1', '1', '".time()."');
-            $result = mysqli_query($conn,"INSERT INTO `hoadon` (`id`, `order_id`, `note`, `ma_gd`, `money`, `code_bank`, `time`) VALUES (NULL, '".$_GET['vnp_TxnRef']."', '".$sp_name."', '".$_GET['vnp_TransactionNo']."', '".$_GET['vnp_Amount']."', '".$_GET['vnp_BankCode']."', '".date("m/d/y", $_GET['vnp_PayDate'])."')");
+            $result = mysqli_query($conn,"INSERT INTO `hoadon` (`id`, `order_id`, `note`, `ma_gd`, `money`, `code_bank`, `time`) VALUES (NULL, '".$_GET['vnp_TxnRef']."', '".$sp_name."', '".$_GET['vnp_TransactionNo']."', '".$_GET['vnp_Amount']."', '".$_GET['vnp_BankCode']."', '".$_GET['vnp_PayDate']."')");
             // UPDATE `sanpham` SET `deleted` = '1' WHERE `sanpham`.`id` = 49;
             // echo "ok";
             $_SESSION['cart']= array();
-            // var_dump($_SESSION['cart']);exit;
+            $_SESSION['tong']=0;
+            // var_dump(date("m/d/y", $_GET['vnp_PayDate']));exit;
         }
        
     }
