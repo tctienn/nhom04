@@ -157,6 +157,9 @@
                             ?>
                                 <a href="../login.php" style="margin-left: -10px; color:white ; text-decoration: none;">đăng nhập</a>&nbsp;&nbsp;
                             <?php
+                             $_SESSION['login']=0;
+                             $_SESSION['username']="";
+                             $_SESSION['gmail']="";
                         }
                     ?>
                     
@@ -174,7 +177,7 @@
 
                     <p style="color: white;  margin-left: 10px; display: flex; flex-direction: column;">
                         <iconify-icon icon="healthicons:ui-user-profile" style="color: white;" width="30" height="30"></iconify-icon>
-                        <a href="#" style="color: white; text-decoration: none; margin:auto; margin-top:-5px;margin-top: 10px;" ><?=$_SESSION['username']?></a>
+                        <a href="#" style="color: white; text-decoration: none; margin:auto; margin-top:-5px;" ><?=$_SESSION['username']?></a>
                         
                     </p>
                     
@@ -287,7 +290,7 @@
         <!--end natbar-->
 
         <!--slide-->
-        <div id="carouselExampleControls" class="carousel slide" data-bs-ride="carousel" style=" z-index: 0;">
+        <div id="carouselExampleControls" class="carousel slide" data-bs-ride="carousel" style=" z-index: 0;  margin-top: 4%;">
             <div class="carousel-inner">
                 <div class="carousel-item active">
                     <img src="../image/1660631916-hm3L-uu-dai-biore-20.webp" class="d-block w-100" alt="...">
@@ -611,15 +614,27 @@
                 if ($result->num_rows > 0) {
                     while ($row = $result->fetch_assoc()) {
                         ?>
-                             <div id="product" class="item_product2">
-                                
-                                <div class="imgproduct"><img class="img_product" src="<?=$row['img']?>" alt=""></div>
-                                <input type="text" style="border: none;" readonly value="<?= $row['sp_name']?>">
-                                <p>
-                                    <b><?=$row['sp_gia']?>đ</b>/hộp
-                                </p>
-                                <a href="?cart=true&id=<?=$row['sp_id']?>"><iconify-icon class="shopping-cart" icon="el:shopping-cart" style="color: black; margin-top: -15px; float: right;" width="27"height="31"></iconify-icon> </a>
-                            </div>
+                             
+                                <div id="product" class="item_product2">
+                                    <?php
+                                        foreach($_SESSION['cart'] as $value)
+                                        {
+                                            if($row['sp_id']==$value->id)
+                                            {
+                                                ?>
+                                                    <iconify-icon style="position: absolute; " icon="teenyicons:message-tick-solid"></iconify-icon>
+                                                <?php
+                                            }
+                                        }
+                                    ?>
+                                    <div class="imgproduct"><img class="img_product" src="<?=$row['img']?>" alt=""></div>
+                                    <a href="./product_item.php?id=<?= $row['sp_id']?>" style="color: black; text-decoration: none;"><input type="text" style="border: none;" readonly value="<?= $row['sp_name']?>"></a>
+                                    <p>
+                                        <b><?=$row['sp_gia']?>đ</b>/hộp
+                                    </p>
+                                    <a href="?cart=true&id=<?=$row['sp_id']?>"><iconify-icon class="shopping-cart" icon="el:shopping-cart" style="color: black; margin-top: -15px; float: right;" width="27"height="31"></iconify-icon> </a>
+                                </div>
+                             
                         <?php
                     }
                 }

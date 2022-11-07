@@ -1,5 +1,24 @@
 <?php
     session_start();
+    require ('../classes/dbConnection.php');
+    $dbConnection = new dbConnection();
+    $conn = $dbConnection->getConnection();
+    if(!isset($_GET['id']))
+    {
+        echo "lỗi trang";exit;
+    }
+        // echo "lỗi trang";exit;
+    $sql ="SELECT sanpham.id as sp_id , sanpham.name as sp_name, sanpham.mota as sp_mota , sanpham.gia as sp_gia,sanpham.img as img, danhmuc.name as cat_name  ,  sanpham.soluong sp_soluong  FROM sanpham , danhmuc WHERE sanpham.danhmuc_id = danhmuc.id AND deleted=1 and sanpham.id= ".$_GET['id']."  ";
+    $result = $conn->query($sql);
+    if ($result->num_rows > 0) {
+        $row = $result->fetch_assoc();
+
+        
+    }
+    else
+    {
+        echo " lỗi : không tìm thấy sản phẩm <br> <a href= './index.php' >về trang chủ</a> ";exit;
+    }
 ?>
 
 <!DOCTYPE html>
@@ -13,7 +32,7 @@
         integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous">
     <link rel="stylesheet" href="../css/trangchu.css">
     <script src="https://code.iconify.design/iconify-icon/1.0.0-beta.3/iconify-icon.min.js"></script>
-    <title>Blog</title>
+    <title>product</title>
 </head>
 
 <body>
@@ -22,29 +41,17 @@
         require_once("../component/hea_der.php")
     ?>
     <br>
-    <div style=" width: 100%; aspect-ratio: 70/3; border: solid 1px black;">
-        null
+    <div style=" width: 100%; aspect-ratio: 65/1;">
+        
     </div>
 
     <div class="container row" style="margin: auto;">
         <div class="col-md-7" style="border-right:solid 1px rgb(169, 169, 169) ;">
-            <h2>Tác dụng tuyệt vời của niacinamide trong chu trình chăm sóc da</h2>
-            <i>Chủ Nhật ngày 28/08/2022</i>
-            <br>
-            <hr>
-            <p>
-                Niacinamide là một loại vitamin có lợi trong thực phẩm và được đưa vào cơ thể bằng nhiều cách như ăn
-                uống hoặc thoa trực tiếp lên da. Niacinamide thuộc nhóm vitamin B và phức hợp vitamin B3, trong các loại
-                sản phẩm chăm sóc da, chất này được sử dụng để loại bỏ các vấn đề da liên quan đến mụn và lỗ chân lông.
-
-                Niacinamide thường được đánh giá là thành phần hiếm hoi có nhiều lợi ích trong chăm sóc da. Đặc biệt là
-                tác dụng phụ xảy ra không đáng kể và hoàn toàn có thể khắc phục. Vì vậy, điều đó có thể thuyết phục ngay
-                cả với những khách hàng khó tính hoặc những người sở hữu làn da nhạy cảm.
-            </p>
+           
             <div>
-                <img src="../image/tac-dung-tuyet-voi-cua-niacinamide-trong-chu-trinh-cham-soc-da-1.jpeg"
-                    style="width: 90%; aspect-ratio: 3/2;" alt="">
-                <center><i>Niacinamide thuộc nhóm vitamin B và phức hợp vitamin B3</i></center>
+                <img src="<?=$row['img']?>"
+                    style="width: 70%; aspect-ratio: 2/2;" alt="">
+                <center><i><?=$row['sp_name']?></i></center>
             </div>
             <p>
             <h4><b>Tác dụng của Niacinamide trong làm đẹp</b></h4>
@@ -54,13 +61,13 @@
             sạch và duy trì bởi niacinamide sẽ khôi phục về kích thước ban đầu. Đối với niacinamide nồng độ cao cũng sẽ
             giúp cải thiện được tình trạng da sần sùi – vấn đề xảy ra khi lỗ chân lông phải chịu tác động từ các yếu tố
             như ánh nắng mặt trời hoặc khói bụi.
-            <div>
+            <!-- <div>
                 <br>
                 <img src="../image/tac-dung-tuyet-voi-cua-niacinamide-trong-chu-trinh-cham-soc-da-2.jpg"
                     style="width: 90%; aspect-ratio: 3/2;" alt="">
                 <center><i> ảnh minh họa </i></center>
                 <br>
-            </div>
+            </div> -->
             Hàng rào bảo vệ da giúp da hạn chế và tránh khỏi những xâm nhập có hại từ môi trường bên ngoài khiến làn da
             mất cân bằng ẩm. Sự có mặt và tham gia của niacinamide trong chu trình chăm sóc da sẽ giúp tái tạo và củng
             cố hàng rào bảo vệ da trở nên kiên cố, sản sinh các ceramide để lấy lại sự trẻ trung, mềm mịn vốn có của làn
@@ -111,45 +118,23 @@
         </div>
 
         <div class="col-md-5">
-            <h4>Bài nổi bật</h4>
-            <hr style="width: 80%; margin: auto;">
-            <br>
-
-            <div class="container-fluid " style="display: flex; margin-bottom: 20px;">
-                <img src="../image/tai-sao-moi-cua-ban-bi-nut-ne-cach-duong-moi-ban-nen-biet-styty-1648789248_small.jpg"
-                    style=" padding: 0; width: 24%; aspect-ratio: 6/5;" alt="">
-                <div style="display: flex; flex-direction: column; justify-content: space-between;">
-                    <h5>Tại sao môi của bạn bị nứt nẻ? Cách dưỡng môi bạn nên biết</h5>
-                    <small><i>Thứ Hai ngày 21/03/2022</i></small>
-                </div>
+            <h4 style="color: #072d94; "><?=$row['sp_name']?></h4>
+            <hr >
+            <h4>giá: <?=number_format($row["sp_gia"],0,",",".")?> đ</h4>
+            
+            <div>
+                <b>danh mục: </b> <i style="color: #1d48ba;"> <?= $row['cat_name']?></i>
             </div>
-            <div class="container-fluid " style="display: flex; margin-bottom: 20px;">
-                <img src="../image/tai-sao-moi-cua-ban-bi-nut-ne-cach-duong-moi-ban-nen-biet-styty-1648789248_small.jpg"
-                    style=" padding: 0; width: 24%; aspect-ratio: 6/5;" alt="">
-                <div style="display: flex; flex-direction: column; justify-content: space-between;">
-                    <h5>Tại sao môi của bạn bị nứt nẻ? Cách dưỡng môi bạn nên biết</h5>
-                    <small><i>Thứ Hai ngày 21/03/2022</i></small>
-                </div>
+            <b>công dụng: </b>
+            <div style=" width: 100%; aspect-ratio: 21/10;">
+                <p><?=$row['sp_mota']?> </p>
             </div>
+            chọn ố lượng: <input form="them"  style="width: 10%; border-radius: 25px;"  type="number" name="soluong" id="" min=1 value="1">
+            <form   id="them" action=""  method="POST">
+                <input type="submit" name="" id="" value="thêm vào giỏ hàng">
+            </form>
 
-            <div class="container-fluid " style="display: flex; margin-bottom: 20px;">
-                <img src="../image/tai-sao-moi-cua-ban-bi-nut-ne-cach-duong-moi-ban-nen-biet-styty-1648789248_small.jpg"
-                    style=" padding: 0; width: 24%; aspect-ratio: 6/5;" alt="">
-                <div style="display: flex; flex-direction: column; justify-content: space-between;">
-                    <h5>Tại sao môi của bạn bị nứt nẻ? Cách dưỡng môi bạn nên biết</h5>
-                    <small><i>Thứ Hai ngày 21/03/2022</i></small>
-                </div>
-            </div>
-
-            <div class="container-fluid " style="display: flex; margin-bottom: 20px;">
-                <img src="../image/tai-sao-moi-cua-ban-bi-nut-ne-cach-duong-moi-ban-nen-biet-styty-1648789248_small.jpg"
-                    style=" padding: 0; width: 24%; aspect-ratio: 6/5;" alt="">
-                <div style="display: flex; flex-direction: column; justify-content: space-between;">
-                    <h5>Tại sao môi của bạn bị nứt nẻ? Cách dưỡng môi bạn nên biết</h5>
-                    <small><i>Thứ Hai ngày 21/03/2022</i></small>
-                </div>
-            </div>
-
+            
         </div>
     </div>
 
