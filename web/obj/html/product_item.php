@@ -119,13 +119,22 @@
 
         <div class="col-md-5">
             <h4 style="color: #072d94; "><?=$row['sp_name']?></h4>
+            <?php
+                foreach($_SESSION['cart'] as $value)
+                {
+                    if($_GET['id']==$value->id)
+                    {
+                        echo "sản phẩm đã nằm trong giỏ hàng";
+                    }
+                }
+            ?>
             <hr >
             <h4>giá: <?=number_format($row["sp_gia"],0,",",".")?> đ</h4>
             
             <div>
                 <b>danh mục: </b> <i style="color: #1d48ba;"> <?= $row['cat_name']?></i>
             </div>
-            <b>công dụng: </b>
+            <b>nội dung: </b>
             <div style=" width: 100%; aspect-ratio: 21/10;">
                 <p><?=$row['sp_mota']?> </p>
             </div>

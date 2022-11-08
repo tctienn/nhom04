@@ -1,5 +1,5 @@
 <?php
-    // session_start();
+    session_start();
     $_SESSION['login']=0;
     $_SESSION['username']="";
     $_SESSION['gmail']="";
