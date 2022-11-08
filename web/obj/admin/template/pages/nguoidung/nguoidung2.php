@@ -56,6 +56,9 @@
                         <?= date('d/m/Y ',$row["create_time"])  ?>
                     </td>
                     <td>
+                        <?= $row["gmail"]  ?>
+                    </td>
+                    <td>
                         <a href="./edit_user/edit_user.php?id=<?=$row["id"]?>" >sửa</a>
                     </td>
                     <td>

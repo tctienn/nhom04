@@ -214,7 +214,7 @@ $render=true;
                                     ?>
                                         <p>tôi đã gủi mã xác nhận tới <?= $_POST['gmail']?></p>
                                         <input type="hidden" name="username" id="username" class="form-control" value="<?=$username?>" >
-                                        <input type="hidden" id="gmail" name="gmail" class="form-control" value="<?=$password?>">
+                                        <input type="hidden" id="gmail" name="gmail" class="form-control" value="<?=$gmail?>">
                                         <input type="hidden" name="password" id="password" class="form-control" value="<?=$password?>" >
                                         <input type="hidden" name="xn" value="<?=$ui?>" >
 
