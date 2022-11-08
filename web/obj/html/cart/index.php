@@ -11,7 +11,10 @@
   // var_dump($_SESSION['cart']);exit;
   
   if(isset($_GET['remove']))
-    unset($_SESSION['cart'][$_GET['remove']]);
+  {
+      // unset($_SESSION['cart'][$_GET['remove']]);  xóa cả giá trị lẫn vị trí của phẩn tử
+      array_splice($_SESSION['cart'], $_GET['remove'], 1);
+  }
     
   // var_dump($_SESSION['cart'][0]);exit;
   if(isset($_GET['tong']) && $_GET['tong']>0)
@@ -58,9 +61,10 @@
 
   <?php $sum=0?>
   <?php
-
+ 
   for($i=0;$i<count($_SESSION['cart']);$i++)
   {
+    // echo count($_SESSION['cart']);exit;
     $sql = "SELECT * FROM `sanpham` WHERE id=".$_SESSION['cart'][$i]->id;
     $getdanhmuc = $conn->query($sql);
     if ($getdanhmuc->num_rows > 0) {

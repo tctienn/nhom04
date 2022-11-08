@@ -20,7 +20,7 @@
             {
                 if(isset($_GET['id']))
                 {
-                    $a=0;
+                    $a=0;  //phần này để kiểm tra xem sản phẩn đã có trong giỏ hàng chưa nếu chưa có thì sẽ cộng 1 để hiển thị số trong icon giỏ hàng
                     for($i=0;$i<count($_SESSION['cart']);$i++)
                     {
                         if($_SESSION['cart'][$i]->id==$_GET['id'])

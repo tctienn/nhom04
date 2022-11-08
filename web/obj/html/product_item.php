@@ -19,6 +19,34 @@
     {
         echo " lỗi : không tìm thấy sản phẩm <br> <a href= './index.php' >về trang chủ</a> ";exit;
     }
+
+
+    if(isset($_GET['id']) && isset($_GET['them']))
+    {
+        if(isset($_POST['soluong']))
+            $soluong=$_POST['soluong'];
+        $pro = new stdclass;
+        $pro->id="";
+        $pro->cout=0;
+        $a=0;  //phần này để kiểm tra xem sản phẩn đã có trong giỏ hàng chưa nếu chưa có thì sẽ cộng 1 để hiển thị số trong icon giỏ hàng
+        for($i=0;$i<count($_SESSION['cart']);$i++)
+        {
+            if($_SESSION['cart'][$i]->id==$_GET['id'])
+            {
+                $a=1;
+                $_SESSION['cart'][$i]->cout+=$soluong;
+                $soluong=0;// chỉ thêm số lượng cho 1 sản phẩm có id đang xét (chức năng này ko có tác dụng)
+            }
+        }
+        if($a!=1)
+        {
+
+            $pro->id=$_GET['id'];
+            $pro->cout=$soluong;
+            array_push($_SESSION['cart'], $pro);
+        }
+        
+    }
 ?>
 
 <!DOCTYPE html>
@@ -53,27 +81,7 @@
                     style="width: 70%; aspect-ratio: 2/2;" alt="">
                 <center><i><?=$row['sp_name']?></i></center>
             </div>
-            <p>
-            <h4><b>Tác dụng của Niacinamide trong làm đẹp</b></h4>
-            Hiện nay chưa có nhiều nghiên cứu cụ thể về tác động của vitamin B đến kích thước lỗ chân lông. Tuy nhiên
-            niacinamide thì lại có tác dụng rõ ràng trong việc thu nhỏ lỗ chân lông, giúp lỗ chân lông trở nên thông
-            thoáng, đẩy lùi tình trạng bít tắc. Sử dụng theo thời gian cùng với hoạt động tế bào, lỗ chân lông được làm
-            sạch và duy trì bởi niacinamide sẽ khôi phục về kích thước ban đầu. Đối với niacinamide nồng độ cao cũng sẽ
-            giúp cải thiện được tình trạng da sần sùi – vấn đề xảy ra khi lỗ chân lông phải chịu tác động từ các yếu tố
-            như ánh nắng mặt trời hoặc khói bụi.
-            <!-- <div>
-                <br>
-                <img src="../image/tac-dung-tuyet-voi-cua-niacinamide-trong-chu-trinh-cham-soc-da-2.jpg"
-                    style="width: 90%; aspect-ratio: 3/2;" alt="">
-                <center><i> ảnh minh họa </i></center>
-                <br>
-            </div> -->
-            Hàng rào bảo vệ da giúp da hạn chế và tránh khỏi những xâm nhập có hại từ môi trường bên ngoài khiến làn da
-            mất cân bằng ẩm. Sự có mặt và tham gia của niacinamide trong chu trình chăm sóc da sẽ giúp tái tạo và củng
-            cố hàng rào bảo vệ da trở nên kiên cố, sản sinh các ceramide để lấy lại sự trẻ trung, mềm mịn vốn có của làn
-            da.
-            </p>
-            <div style="float: right ;">Nguồn: Tổng hợp</div>
+            
             <br>
             <div style="clear: right ;">
                 <small>
@@ -139,7 +147,7 @@
                 <p><?=$row['sp_mota']?> </p>
             </div>
             chọn ố lượng: <input form="them"  style="width: 10%; border-radius: 25px;"  type="number" name="soluong" id="" min=1 value="1">
-            <form   id="them" action=""  method="POST">
+            <form   id="them" action="?id=<?=$_GET['id']?>&them"  method="POST">
                 <input type="submit" name="" id="" value="thêm vào giỏ hàng">
             </form>
 
