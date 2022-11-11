@@ -1,4 +1,24 @@
 <?php
+  /////
+  session_start();
+      
+  if(isset($_SESSION['login']) && isset($_SESSION['username']) && isset($_SESSION['gmail']) )
+  {
+   
+    
+
+    if($_SESSION['login']==1)
+    {
+      $gmail= $_SESSION['gmail'];
+      $username=$_SESSION['username'];
+    }
+    else{
+      $gmail="";
+      $username="";
+    }
+  }
+ ////
+
    if(isset($_GET['addblog']))
   {
     require('./upimg.php');
@@ -71,10 +91,10 @@
           </button>
         </div>
         <div>
-          <a class="navbar-brand brand-logo" href="../../index.html">
+          <a class="navbar-brand brand-logo" href="../../../../html/index.php">
             <img src="../../images/logo.svg" alt="logo" />
           </a>
-          <a class="navbar-brand brand-logo-mini" href="../../index.html">
+          <a class="navbar-brand brand-logo-mini" href="../../../../html/index.php">
             <img src="../../images/logo-mini.svg" alt="logo" />
           </a>
         </div>
@@ -82,7 +102,7 @@
       <div class="navbar-menu-wrapper d-flex align-items-top"> 
         <ul class="navbar-nav">
           <li class="nav-item font-weight-semibold d-none d-lg-block ms-0">
-            <h1 class="welcome-text">Good Morning, <span class="text-black fw-bold">John Doe</span></h1>
+            <h1 class="welcome-text">Good Morning, <span class="text-black fw-bold"><?=$username?></span></h1>
             <h3 class="welcome-sub-text">Your performance summary this week </h3>
           </li>
         </ul>
@@ -218,14 +238,27 @@
             <div class="dropdown-menu dropdown-menu-right navbar-dropdown" aria-labelledby="UserDropdown">
               <div class="dropdown-header text-center">
                 <img class="img-md rounded-circle" src="../../images/faces/face8.jpg" alt="Profile image">
-                <p class="mb-1 mt-3 font-weight-semibold">Allen Moreno</p>
-                <p class="fw-light text-muted mb-0">allenmoreno@gmail.com</p>
+                <p class="mb-1 mt-3 font-weight-semibold"><?=$username?></p>
+                <p class="fw-light text-muted mb-0"><?=$gmail?></p>
               </div>
               <a class="dropdown-item"><i class="dropdown-item-icon mdi mdi-account-outline text-primary me-2"></i> My Profile <span class="badge badge-pill badge-danger">1</span></a>
               <a class="dropdown-item"><i class="dropdown-item-icon mdi mdi-message-text-outline text-primary me-2"></i> Messages</a>
               <a class="dropdown-item"><i class="dropdown-item-icon mdi mdi-calendar-check-outline text-primary me-2"></i> Activity</a>
               <a class="dropdown-item"><i class="dropdown-item-icon mdi mdi-help-circle-outline text-primary me-2"></i> FAQ</a>
-              <a class="dropdown-item"><i class="dropdown-item-icon mdi mdi-power text-primary me-2"></i>Sign Out</a>
+              <a href='<?= $_SESSION['login']!=1?"../../../../login.php":"../../../../logout.php" ?>' class="dropdown-item"><i class="dropdown-item-icon mdi mdi-power text-primary me-2"></i>
+              
+                <?php 
+                 if(isset($_SESSION['login']))
+                 {
+                  if($_SESSION['login']==1) 
+                    $a="đăng xuất";
+                  else $a=" đăng nhập"; 
+                 
+                 }
+                 else $a="chưa đăng nhập";
+                 echo "$a"; 
+                ?>
+              </a>
             </div>
           </li>
         </ul>
@@ -410,7 +443,7 @@
       <nav class="sidebar sidebar-offcanvas" id="sidebar">
         <ul class="nav">
           <li class="nav-item">
-            <a class="nav-link" href="../../index.html">
+            <a class="nav-link" href="../../index_admin.php">
               <i class="mdi mdi-grid-large menu-icon"></i>
               <span class="menu-title">Dashboard</span>
             </a>
