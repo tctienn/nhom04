@@ -42,6 +42,18 @@ CREATE TABLE `hoadon` (
 ALTER TABLE `hoadon` CHANGE `time` `time` VARCHAR(20) NULL DEFAULT NULL;
 
 
+CREATE TABLE `blog` (
+  `id` int PRIMARY KEY AUTO_INCREMENT,
+  `title` varchar(255),
+  `create` varchar(255),
+  `nd` longtext,
+  `img1` varchar(255),
+  `nd2` longtext,
+  `img2` varchar(255)
+);
+
+ALTER TABLE `blog` ADD `render` INT NOT NULL AFTER `img2`;
+ALTER TABLE `blog` ADD `vitri` INT NOT NULL AFTER `render`;
 --  2. bảng sản phẩm
 --     id : khóa tự tăng
 --     name: string -> 350

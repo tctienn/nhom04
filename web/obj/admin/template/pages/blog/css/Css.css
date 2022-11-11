@@ -1,0 +1,10 @@
+.input_update {
+    width: 100%;
+}
+
+.egimg {
+    float: right;
+    width: 41%;
+    aspect-ratio: 7/5;
+    float: left;
+}

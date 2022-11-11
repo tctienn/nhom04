@@ -94,6 +94,13 @@
     //lấy slide
     $slide_sql="SELECT sanpham.id as sp_id , sanpham.name as sp_name, sanpham.mota as sp_mota , sanpham.gia as sp_gia,sanpham.img as img, danhmuc.name as cat_name  ,  sanpham.soluong sp_soluong  FROM sanpham , danhmuc WHERE sanpham.danhmuc_id = danhmuc.id AND deleted=1 and danhmuc.name= 'thuốc bổ' ORDER BY sanpham.id ASC  limit 5 ";
     $slide_result = $conn->query($slide_sql);
+
+    //lấy blog
+        $blog_sql="SELECT *  FROM blog WHERE render=1 and vitri='2' ";
+        $blog_result = $conn->query($blog_sql);
+
+        $blog_main="SELECT *  FROM blog WHERE render=1 and vitri='1' ";
+        $main_ = $conn->query($blog_main);
     
     
 
@@ -788,23 +795,58 @@
                 &nbsp;
                 Góc Sức Khỏe
             </h5>
-            <div class="col-md-6 big_blog">
-                <img src="../image/bang-chi-so-thai-nhi-va-nhung-dieu-me-bau-can-biet-zjplT-1661584729_large (2).webp"
-                    alt="">
-                <div style="margin-left: 10px;">
-                    <p>
-                    <h4> Bảng Chỉ Số Thai Nhi Và Những Điều Mẹ Bầu Cần Biết</h4>
-                    </p>
-                </div>
-            </div>
+            <?php
+                if ($main_->num_rows > 0) {
+                    $row = $main_->fetch_assoc();
+                }
+                ?>
+                    <div class="col-md-6 big_blog">
+                        <img src="<?=$row['img1']?>" alt="">
+                        <div style="margin-left: 10px;">
+                            <p>
+                            <h4> <?=$row['title']?></h4>
+                            </p>
+                        </div>
+                    </div>
+                <?php
+            ?>
             <div class="container-fluid col-md-5">
                 <ul class="row" style="list-style-type: none;
                 padding: 0;
                 display: flex;
                 flex-direction: column;
                 justify-content: space-between;
-                height: 100%;">
-                    <li class="small_blog">
+                ">
+                    <?php
+                        if ($blog_result->num_rows > 0) {
+                            $i=0;
+                            while($row = $blog_result->fetch_assoc()) {
+                                $i++;
+                                
+                                
+                                ?>
+                                    <li class="small_blog" >
+                                        
+                                            <img src="<?=$row['img1']?>" style="width: 100px;  height:76px;  " alt="">
+                                            <div style=" overflow: hidden; overflow: hidden; height: 52px; ">
+                                                <b><a href="./blog.php?id=<?=$row['id']?>" id="ab"><?=$row ['title']?></a></b>
+                                            </div>
+                                            <div style=" font-size: 10px; width: 20px; height: 17px; ">
+                                                <?=date('d/m/Y ',$row["create"])?>   
+                                            </div>
+                                        
+                                    </li>
+                                <?php
+                                if($i>=4)
+                                {
+                                    break;
+                                }
+                            }
+                        }
+                    ?>
+
+
+                    <!-- <li class="small_blog">
                         <img src="../image/banh-trang-tron-bao-nhieu-calo-jtiYc-1661530582_medium.webp" class="col-md-4"
                             alt="">
                         <div>
@@ -817,21 +859,7 @@
                         <div>
                             <b>Thắc Mắc: Bánh Tráng Trộn Bao Nhiêu Calo?</b>
                         </div>
-                    </li>
-                    <li class="small_blog">
-                        <img src="../image/banh-trang-tron-bao-nhieu-calo-jtiYc-1661530582_medium.webp" class="col-md-4"
-                            alt="">
-                        <div>
-                            <b>Thắc Mắc: Bánh Tráng Trộn Bao Nhiêu Calo?</b>
-                        </div>
-                    </li>
-                    <li class="small_blog">
-                        <img src="../image/banh-trang-tron-bao-nhieu-calo-jtiYc-1661530582_medium.webp" class="col-md-4"
-                            alt="">
-                        <div>
-                            <b>Thắc Mắc: Bánh Tráng Trộn Bao Nhiêu Calo?</b>
-                        </div>
-                    </li>
+                    </li> -->
                 </ul>
             </div>
         </div>

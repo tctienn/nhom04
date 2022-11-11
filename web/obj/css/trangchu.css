@@ -195,13 +195,14 @@
 .small_blog {
     display: flex;
     box-shadow: 0 4px 19px -17px black;
-    /* margin: 10px; */
+    margin-bottom: 10px;
 }
 
 .small_blog>img {
     width: 38%;
     margin-right: 10px;
     border-radius: 10px;
+
 }
 
 .noidung_postt {
@@ -280,4 +281,12 @@
     left: -3%;
     top: -11%;
     color: white;
+
+}
+
+
+#ab {
+    text-decoration: none;
+    color: black;
+
 }

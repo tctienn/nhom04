@@ -23,6 +23,14 @@
     $sql3 = "SELECT * FROM danhmuc ";
     $dm_cout = $conn->query($sql3);
     $dm_cout = mysqli_num_rows( $dm_cout);
+    // đếm blog
+    $sq4 = "SELECT * FROM danhmuc ";
+    $blog_cout = $conn->query($sql4);
+    $blog_cout = mysqli_num_rows( $blog_cout);
+
+      $sq5 = "SELECT * FROM danhmuc  where render= '1' ";
+      $blog_on = $conn->query($sql5);
+      $blog_on = mysqli_num_rows( $blog_on);
 
 
 
@@ -453,13 +461,13 @@
       <!-- partial:partials/_sidebar.html -->
       <nav class="sidebar sidebar-offcanvas" id="sidebar">
         <ul class="nav">
-          <li class="nav-item">
+          <!-- <li class="nav-item">
             <a class="nav-link" href="index.html">
               <i class="mdi mdi-grid-large menu-icon"></i>
               <span class="menu-title">Dashboard</span>
             </a>
-          </li>
-          <li class="nav-item nav-category">UI Elements</li>
+          </li> -->
+          <!-- <li class="nav-item nav-category">UI Elements</li>
           <li class="nav-item">
             <a class="nav-link" data-bs-toggle="collapse" href="#ui-basic" aria-expanded="false"
               aria-controls="ui-basic">
@@ -474,7 +482,7 @@
                 <li class="nav-item"> <a class="nav-link" href="pages/ui-features/typography.html">Typography</a></li>
               </ul>
             </div>
-          </li>
+          </li> -->
           <li class="nav-item nav-category">Forms and Datas</li>
           <li class="nav-item">
             <a class="nav-link" data-bs-toggle="collapse" href="#form-elements" aria-expanded="false"
@@ -525,12 +533,17 @@
           <li class="nav-item">
             <a class="nav-link" data-bs-toggle="collapse" href="#tables" aria-expanded="false" aria-controls="tables">
               <i class="menu-icon mdi mdi-table"></i>
-              <span class="menu-title">Tables</span>
+              <span class="menu-title">blog</span>
               <i class="menu-arrow"></i>
             </a>
             <div class="collapse" id="tables">
               <ul class="nav flex-column sub-menu">
-                <li class="nav-item"> <a class="nav-link" href="pages/tables/basic-table.html">Basic table</a></li>
+                <li class="nav-item"> <a class="nav-link" href="pages/blog/addblog.php">thêm blog</a></li>
+              </ul>
+            </div>
+            <div class="collapse" id="tables">
+              <ul class="nav flex-column sub-menu">
+                <li class="nav-item"> <a class="nav-link" href="pages/blog/danhsach.php">danh sách blog</a></li>
               </ul>
             </div>
           </li>
@@ -623,9 +636,9 @@
                             <p class="text-danger d-flex"><i class="mdi mdi-menu-down"></i><span>admin : <?=$admin_c?></span></p>
                           </div>
                           <div class="d-none d-md-block">
-                            <p class="statistics-title">Avg. Time on Site</p>
-                            <h3 class="rate-percentage">2m:35s</h3>
-                            <p class="text-success d-flex"><i class="mdi mdi-menu-down"></i><span>+0.8%</span></p>
+                            <p class="statistics-title">blog</p>
+                            <h3 class="rate-percentage"><?=$blog_cout?></h3>
+                            <p class="text-success d-flex"><i class="mdi mdi-menu-down"></i><span>blog đang hoạt động: <?=$blog_on?></span></p>
                           </div>
                           <div class="d-none d-md-block">
                             <p class="statistics-title">New Sessions</p>

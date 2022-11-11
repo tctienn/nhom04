@@ -1,5 +1,19 @@
 <?php
     session_start();
+    require_once ("../classes/dbConnection.php"); 
+     $dbConnection = new dbConnection();
+     $conn = $dbConnection->getConnection();
+     if(isset($_GET['id']))
+     {
+        $sql="select * from blog where id= ".$_GET['id'];
+        $result = $conn->query($sql);
+        if ($result->num_rows > 0) 
+        $row = $result->fetch_assoc();
+     }
+
+
+     
+     
 ?>
 
 <!DOCTYPE html>
@@ -22,49 +36,33 @@
         require_once("../component/hea_der.php")
     ?>
     <br>
-    <div style=" width: 100%; aspect-ratio: 70/3; border: solid 1px black;">
-        null
-    </div>
+
 
     <div class="container row" style="margin: auto;">
         <div class="col-md-7" style="border-right:solid 1px rgb(169, 169, 169) ;">
-            <h2>Tác dụng tuyệt vời của niacinamide trong chu trình chăm sóc da</h2>
+            <h2><?=$row['title']?></h2>
             <i>Chủ Nhật ngày 28/08/2022</i>
             <br>
             <hr>
             <p>
-                Niacinamide là một loại vitamin có lợi trong thực phẩm và được đưa vào cơ thể bằng nhiều cách như ăn
-                uống hoặc thoa trực tiếp lên da. Niacinamide thuộc nhóm vitamin B và phức hợp vitamin B3, trong các loại
-                sản phẩm chăm sóc da, chất này được sử dụng để loại bỏ các vấn đề da liên quan đến mụn và lỗ chân lông.
-
-                Niacinamide thường được đánh giá là thành phần hiếm hoi có nhiều lợi ích trong chăm sóc da. Đặc biệt là
-                tác dụng phụ xảy ra không đáng kể và hoàn toàn có thể khắc phục. Vì vậy, điều đó có thể thuyết phục ngay
-                cả với những khách hàng khó tính hoặc những người sở hữu làn da nhạy cảm.
+               <?=$row['nd']?>
             </p>
             <div>
-                <img src="../image/tac-dung-tuyet-voi-cua-niacinamide-trong-chu-trinh-cham-soc-da-1.jpeg"
+                <img src="<?=$row['img1']?>"
                     style="width: 90%; aspect-ratio: 3/2;" alt="">
                 <center><i>Niacinamide thuộc nhóm vitamin B và phức hợp vitamin B3</i></center>
             </div>
             <p>
             <h4><b>Tác dụng của Niacinamide trong làm đẹp</b></h4>
-            Hiện nay chưa có nhiều nghiên cứu cụ thể về tác động của vitamin B đến kích thước lỗ chân lông. Tuy nhiên
-            niacinamide thì lại có tác dụng rõ ràng trong việc thu nhỏ lỗ chân lông, giúp lỗ chân lông trở nên thông
-            thoáng, đẩy lùi tình trạng bít tắc. Sử dụng theo thời gian cùng với hoạt động tế bào, lỗ chân lông được làm
-            sạch và duy trì bởi niacinamide sẽ khôi phục về kích thước ban đầu. Đối với niacinamide nồng độ cao cũng sẽ
-            giúp cải thiện được tình trạng da sần sùi – vấn đề xảy ra khi lỗ chân lông phải chịu tác động từ các yếu tố
-            như ánh nắng mặt trời hoặc khói bụi.
+                <?=$row['nd2']?>
             <div>
                 <br>
-                <img src="../image/tac-dung-tuyet-voi-cua-niacinamide-trong-chu-trinh-cham-soc-da-2.jpg"
+                <img src="<?=$row['img2']?>"
                     style="width: 90%; aspect-ratio: 3/2;" alt="">
                 <center><i> ảnh minh họa </i></center>
                 <br>
             </div>
-            Hàng rào bảo vệ da giúp da hạn chế và tránh khỏi những xâm nhập có hại từ môi trường bên ngoài khiến làn da
-            mất cân bằng ẩm. Sự có mặt và tham gia của niacinamide trong chu trình chăm sóc da sẽ giúp tái tạo và củng
-            cố hàng rào bảo vệ da trở nên kiên cố, sản sinh các ceramide để lấy lại sự trẻ trung, mềm mịn vốn có của làn
-            da.
+
             </p>
             <div style="float: right ;">Nguồn: Tổng hợp</div>
             <br>
@@ -83,7 +81,32 @@
             justify-content: space-evenly;">
                 <h4>Bài viết liên quan</h4>
                 <hr>
-                <div class="col-md-3">
+                <?php
+                    if(isset($_GET['id']))
+                    {
+                    $sql="select * from blog ";
+                    $result = $conn->query($sql);
+                    if ($result->num_rows > 0)
+                    {
+                        for($i=0; $i<4 ;$i++)
+                        {
+                                $row = $result->fetch_assoc()
+                            ?>
+                                    <div class="col-md-3">
+                                        <img src="<?=$row['img1']?>" style="    width: 100%;
+                                        aspect-ratio: 3/2;" alt="">
+                                        <small>
+                                            <a href="./blog.php?id=<?=$row['id']?>" id="ab"><?=$row['title']?> </a>
+                                            <small><?=date('d/m/Y ',$row["create"])?></small>
+                                        </small>
+                                    </div>
+                            <?php
+                        }
+                    } 
+                    
+                    }
+                ?>
+                <!-- <div class="col-md-3">
                     <img src="../image/da-bi-chay-nang-dung-lam-nhung-dieu-nay-UalHI-1515062804_small.jpg" style="    width: 100%;
                     aspect-ratio: 3/2;" alt="">
                     <small>
@@ -106,7 +129,7 @@
                         Da bị cháy nắng: đừng làm những điều này để tình hình tệ hơn
                         <small>Thứ Sáu ngày 29/09/2017</small>
                     </small>
-                </div>
+                </div> -->
             </div>
         </div>
 
@@ -115,7 +138,32 @@
             <hr style="width: 80%; margin: auto;">
             <br>
 
-            <div class="container-fluid " style="display: flex; margin-bottom: 20px;">
+            <?php
+                if(isset($_GET['id']))
+                {
+                   $sql="select * from blog ";
+                   $result = $conn->query($sql);
+                   if ($result->num_rows > 0)
+                   {
+                       for($i=0; $i<=4 ;$i++)
+                       {
+                            $row = $result->fetch_assoc()
+                           ?>
+                                <div class="container-fluid " style="display: flex; margin-bottom: 20px;">
+                                    <img src="<?=$row['img1']?>"
+                                        style=" padding: 0; width: 24%; aspect-ratio: 6/5;" alt="">
+                                    <div style="display: flex; flex-direction: column; justify-content: space-between;">
+                                        <h5><?=$row['title']?></h5>
+                                        <small><i><?=date('d/m/Y ',$row["create"])?></i></small>
+                                    </div>
+                                </div>
+                           <?php
+                       }
+                   } 
+                   
+                }
+            ?>
+            <!-- <div class="container-fluid " style="display: flex; margin-bottom: 20px;">
                 <img src="../image/tai-sao-moi-cua-ban-bi-nut-ne-cach-duong-moi-ban-nen-biet-styty-1648789248_small.jpg"
                     style=" padding: 0; width: 24%; aspect-ratio: 6/5;" alt="">
                 <div style="display: flex; flex-direction: column; justify-content: space-between;">
@@ -148,7 +196,7 @@
                     <h5>Tại sao môi của bạn bị nứt nẻ? Cách dưỡng môi bạn nên biết</h5>
                     <small><i>Thứ Hai ngày 21/03/2022</i></small>
                 </div>
-            </div>
+            </div> -->
 
         </div>
     </div>
