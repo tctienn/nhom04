@@ -3,19 +3,30 @@
      $dbConnection = new dbConnection();
      $conn = $dbConnection->getConnection();
      //đếm số lượng sản phẩm hiện tại
-     $sql = "SELECT * FROM hoadon where `time`= '".date('Ymd')."' ";
-     $result = $conn->query($sql);
-    //  echo date('Ymd');
-    //array tong
-    $arr=array();
-    // array_push($arr, $tong);
-    $tong=0;
-     if ($result->num_rows > 0) {
-        while ($row = $result->fetch_assoc()) {
-             $tong +=$row['money'] ;
+     $arr=array();
+     
+    //                 2         3           4           5         6          7         cn
+     $days = array( 'Monday', 'Tuesday', 'Wednesday','Thursday','Friday', 'Saturday','Sunday');
+     //                 0          1          2           3         4         5          6
+     foreach($days as $day)
+     {  $tong=0;
+        $sql = "SELECT * FROM hoadon where `time`= '".date('Ymd',strtotime( $day.' this week'))."' ";
+        $result = $conn->query($sql);
+        if ($result->num_rows > 0) {
+            while ($row = $result->fetch_assoc()) {
+                 $tong +=$row['money'] ;
+            }
         }
-    }
-    echo $tong;
+         array_push($arr, $tong);
+     }
+
+    //  echo date('Y/m/d',strtotime( $day.'Sunday this week'));exit;
+    // echo var_dump($arr);exit;
+
+     
+    
+     
+    // echo $tong;
     // $date = '2012-10-11';
     // $date= date('Y-m-d');
     // $day  = 1;
@@ -56,12 +67,14 @@
     </div>
     <script>
         const labels = [
+            '0',
             'thứ 2',
             'thứ 3',
             'thứ 4',
             'thứ 5',
             'thứ 7',
             'CN',
+            
         ];
 
         const data = {
@@ -70,7 +83,7 @@
                 label: 'My First dataset',
                 backgroundColor: 'rgb(255, 99, 132)',
                 borderColor: 'rgb(255, 99, 132)',
-                data: [0, 10, 5, 0, 20, 30, 45],
+                data: [0,<?=$arr[0]?>, <?=$arr[1]?>, <?=$arr[2]?>, <?=$arr[3]?>, <?=$arr[4]?>, <?=$arr[5]?>,<?=$arr[6]?>],
             }]
         };
 
