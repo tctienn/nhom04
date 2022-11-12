@@ -66,7 +66,7 @@
 </head>
 
 <body>
-    <div style=" width: 765px; border: solid 1px black;">
+    <div style=" width: 100%; border: solid 1px black;">
         <canvas id="myChart"></canvas>
     </div>
     <center><small>thống kê tiền hóa đơn theo tuần</small></center>
