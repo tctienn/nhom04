@@ -1,5 +1,9 @@
 <?php
      require_once ("../../classes/dbConnection.php");
+     function bieudo_tien()
+     {
+        
+     
      $dbConnection = new dbConnection();
      $conn = $dbConnection->getConnection();
      //đếm số lượng sản phẩm hiện tại
@@ -62,9 +66,10 @@
 </head>
 
 <body>
-    <div>
+    <div style=" width: 765px; border: solid 1px black;">
         <canvas id="myChart"></canvas>
     </div>
+    <center><small>thống kê tiền hóa đơn theo tuần</small></center>
     <script>
         const labels = [
             '0',
@@ -80,7 +85,7 @@
         const data = {
             labels: labels,
             datasets: [{
-                label: 'My First dataset',
+                label: '',
                 backgroundColor: 'rgb(255, 99, 132)',
                 borderColor: 'rgb(255, 99, 132)',
                 data: [0,<?=$arr[0]?>, <?=$arr[1]?>, <?=$arr[2]?>, <?=$arr[3]?>, <?=$arr[4]?>, <?=$arr[5]?>,<?=$arr[6]?>],
@@ -103,3 +108,9 @@
 </body>
 
 </html>
+
+<?php
+    }
+
+    // bieudo_tien();
+?>

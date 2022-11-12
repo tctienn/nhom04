@@ -11,12 +11,3 @@ CREATE TABLE `blog` (
 
 
 -- ///////////////////
-CREATE TABLE `user` (
-  `id` int PRIMARY KEY AUTO_INCREMENT ,
-  `username` varchar(50),
-  `password` varchar(150),
-  `is_admin` int,
-  `create_time` varchar(20),
-  `gmail` varchar(50),
-  
-);

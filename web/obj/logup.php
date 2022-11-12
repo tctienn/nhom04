@@ -66,6 +66,7 @@ $render=true;
                     $time=time();
                     $result = mysqli_query($conn,"INSERT INTO `user` (`id`, `usename`, `password`, `is_admin`, `create_time`,`gmail`) VALUES (NULL, '$username', MD5('$password'), '0', '".time()."','$gmail')");
                     $error=false;
+                    // var_dump($result);exit;
                     // if(strpos(mysqli_error($conn),"Duplicate entry")!==false)
                     //     echo "tài khoản đã tồn tại";exit;
                     ?>
