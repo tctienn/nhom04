@@ -1,59 +1,22 @@
 <?php
-  /////
-  session_start();
+    /////
+    session_start();
       
-  if(isset($_SESSION['login']) && isset($_SESSION['username']) && isset($_SESSION['gmail']) )
-  {
+    if(isset($_SESSION['login']) && isset($_SESSION['username']) && isset($_SESSION['gmail']) )
+    {
+        
+      if($_SESSION['login']==1)
+      {
+        $gmail= $_SESSION['gmail'];
+        $username=$_SESSION['username'];
+      }
+      else{
+        $gmail="";
+        $username="";
+      }
+    }
    
-    
-
-    if($_SESSION['login']==1)
-    {
-      $gmail= $_SESSION['gmail'];
-      $username=$_SESSION['username'];
-    }
-    else{
-      $gmail="";
-      $username="";
-    }
-  }
- ////
-
-   if(isset($_GET['addblog']))
-  {
-    require('./upimg.php');
-    $img=$ss;
-    $img2=$ss2;
-
-    if(isset($_POST['title']) && isset($_POST['nd']) &&  isset($_POST['nd2']) && isset($_POST['render']))
-    {
-      $title=$_POST['title'];
-      $nd=$_POST['nd'];
-      $nd2=$_POST['nd2'];
-      $render=$_POST['render'];
-      
-      require_once ("../../../../classes/dbConnection.php");
-      $dbConnection = new dbConnection();
-      $conn = $dbConnection->getConnection();
-      try {
-          $time=time();
-          $result = mysqli_query($conn,"INSERT INTO `blog` (`id`, `title`, `create`, `nd`, `img1`, `nd2`, `img2`, `render`) VALUES (NULL, '".$title."', '".time()."' , '".$nd."', '".$img."', '".$nd2."', '".$img2."', '".$render."')");
-          $error=false;
-          // echo "ui";exit;
-          ?>
-            <Script>
-                alert("thêm blog thành công");
-            </Script>
-          <?php
-        }
-        catch (Exception $e) {
-          //Xử lý ngoại lệ ở đây
-          $errorMsg="thêm sản phẩm thất bại";
-          $error=true;
-        }
-    }
-  }
-
+   ////
 ?>
 
 <!DOCTYPE html>
@@ -63,7 +26,7 @@
   <!-- Required meta tags -->
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-  <title>Star Admin2 </title>
+  <title>s </title>
   <!-- plugins:css -->
   <link rel="stylesheet" href="../../vendors/feather/feather.css">
   <link rel="stylesheet" href="../../vendors/mdi/css/materialdesignicons.min.css">
@@ -94,7 +57,7 @@
           <a class="navbar-brand brand-logo" href="../../../../html/index.php">
             <img src="../../images/logo.svg" alt="logo" />
           </a>
-          <a class="navbar-brand brand-logo-mini" href="../../../../html/index.php">
+          <a class="navbar-brand brand-logo-mini" href="../../index.html">
             <img src="../../images/logo-mini.svg" alt="logo" />
           </a>
         </div>
@@ -535,96 +498,116 @@
         </ul>
       </nav>
       <!-- partial -->
-
-      <!-- ////////////// -->
-
       <div class="main-panel">
         <div class="content-wrapper">
-
-        
-    <?php
-         require("../../../../classes/dbConnection.php"); 
-         $trang=0; if(isset($_GET['trang']))$trang=$_GET['trang']*4;
-    
-         $dbConnection = new dbConnection();
-         $conn = $dbConnection->getConnection();
-         $sql = "SELECT * FROM sanpham where deleted=1 ORDER BY id ASC limit ".$trang.",4 "; // limit "offset", "limit"
-         
-         $result = $conn->query($sql);
-        
-    ?>
-   <h2>Danh sách người dùng</h2>
-    <table class="table" id="tblUser" border="1">
-    <thead>
-        <tr>
-            <th>id</th>
-            <th>tên sản phẩm</th>
-            <th>mô tả</th>
-            <th>danh mục</th>
-            <th>giá</th>
-            <th>img</th>
-            <th>thời gian tạo</th>
-            <th>thời gian cập nhật</th>
-            <th>số lượng</th>
-            <th colspan=2 >chức năng</th>
-        </tr>
-    </thead>
-    <tbody>
-    <?php
-    if ($result->num_rows > 0) {
-        $stt = 0;
-            while ($row = $result->fetch_assoc()) {
-                ?>
-                                   
-                        <tr>     
-                            <td>
-                                <?= $row["id"] ?>
-                            </td>
-                            <td style="padding: 0;">
-                                <?= $row["name"]  ?>
-                            </td>
-                            <td style="padding: 0;" >
-                                <textarea style="border: none; background-color: #f4f5f7;" name="" id="" cols="20" rows="5"><?= $row["mota"] ?></textarea>
-                            </td>
-                            <td>
-                                <?= $row["danhmuc_id"] ?>
-                            </td>
-                            <td>
-                                <?= number_format($row["gia"],0,",","."); echo "đ"; ?>
-                            </td>
-                            <td>
-                                <img src= <?= $row["img"] ?> style="width:59px ; asaspect-ratio:2/2; border-radius: 0; "  alt="">
-                            </td>
-                            <td>
-                                
-                                <?= date('d/m/Y ',$row["create_at"])  ?>
-                            </td>
-                            <td>
-                                
-                                <?= !empty($row["update_at"])? date('d/m/Y ',$row["update_at"]):'0/0/0'  ?>
-                            </td>
-                            <td>
-                            <?=$row['soluong']?>
-                            </td>
-                            <td>
-                                <a href="./Update.php?sua=<?= $row["id"] ?>&name=<?=$row['name']?>&mota=<?=$row['mota']?>&danhmuc_id=<?=$row['danhmuc_id']?>&gia=<?=$row['gia']?>&img=<?=$row['img']?>">sửa</a>
-
-                            </td>
-                            <td>
-                                <a href="./update/Delete.php?xoa=<?= $row["id"] ?>">xóa</a>
-                            </td>
-                        </tr>
+          <div class="row">
+            <!-- //////////////////// -->
+            <h2>danh sách sản phẩm</h2>
             <?php
-            }
-        } else {
-            echo "0 results";
-        }
-        $conn->close();
-        ?> 
-    </tbody>
-</table>
+                require("../../../../classes/dbConnection.php"); 
+                $trang=0; if(isset($_GET['trang']))$trang=$_GET['trang']*4;
+                $dbConnection = new dbConnection();
+                $conn = $dbConnection->getConnection();
+                $sql = "SELECT * FROM sanpham where deleted=1 ORDER BY id ASC limit ".$trang.",4 "; // limit "offset", "limit"
+                
+                $result = $conn->query($sql);
+                
+                if ($result->num_rows > 0) 
+                {
+                      ?>
+                            <table border=1  >
+                                <tr>
+                                    <th>id</th>
+                                    <th>tên sản phẩm</th>
+                                    <th>mô tả</th>
+                                    <th>danh mục</th>
+                                    <th>giá</th>
+                                    <th>img</th>
+                                    <th>thời gian tạo</th>
+                                    <th>thời gian cập nhật</th>
+                                    <th>số lượng</th>
+                                    <th colspan=2 >chức năng</th>
+                                </tr>
+                            <?php
+                            $a=0;
+                            while ($row = $result->fetch_assoc()) 
+                            {                     
+                              $a++;   
+                                    ?>
+                                        <tr style="<?php if($a%2==0){echo 'background-color: #ffe7e7';}?>">     
+                                            <td>
+                                                <?= $row["id"] ?>
+                                            </td>
+                                            <td>
+                                                <?= $row["name"]  ?>
+                                            </td>
+                                            <td>
+                                                <textarea name="" id="" cols="20" rows="2" disabled="disabled" ><?= $row["mota"] ?></textarea>
+                                            </td>
+                                            <td>
+                                                <?= $row["danhmuc_id"] ?>
+                                            </td>
+                                            <td>
+                                                <?= number_format($row["gia"],0,",","."); echo "đ"; ?>
+                                            </td>
+                                            <td>
+                                                <img src= <?= $row["img"] ?> style="width:50px ; asaspect-ratio:2/2; "  alt="">
+                                            </td>
+                                            <td>
+                                                
+                                                <?= date('d/m/Y ',$row["create_at"])  ?>
+                                            </td>
+                                            <td>
+                                                
+                                                <?= !empty($row["update_at"])? date('d/m/Y ',$row["update_at"]):'0/0/0'  ?>
+                                            </td>
+                                            <td>
+                                            <?=$row['soluong']?>
+                                            </td>
+                                            <td>
+                                                <a href="./Update.php?sua=<?= $row["id"] ?>&name=<?=$row['name']?>&mota=<?=$row['mota']?>&danhmuc_id=<?=$row['danhmuc_id']?>&gia=<?=$row['gia']?>&img=<?=$row['img']?>">sửa</a>
 
+                                            </td>
+                                            <td>
+                                                <a href="./update/Delete.php?xoa=<?= $row["id"] ?>">xóa</a>
+                                            </td>
+                                        </tr>
+                                    <?php
+                            }
+                            ?>
+                            </table>
+                            <br>
+                            <?php
+                                $sql2 = "SELECT * FROM sanpham where deleted=1 ";
+                                $sumrow = $conn->query($sql2);
+                                $sumrow = mysqli_num_rows( $sumrow)/4;
+                                $tranghientai=isset($_GET['trang'])?$_GET['trang']:0;
+                                ?>
+                                  <div>
+                                    <?php
+                                      for($i=0;$i<$sumrow;$i++)
+                                      {
+                                          if($tranghientai !=$i )
+                                            {
+                                              ?><a href="?trang=<?=$i?>"><button><?=$i?></button></a><?php
+                                            }
+                                          else{
+                                              ?><a href="?trang=<?=$i?>"><button style="color: white;"><?=$i?></button></a><?php
+                                          }
+                                      }
+                                    ?>
+                                  </div>
+                                <?php
+                                // echo "trang hien tai $tranghientai";
+                            ?>
 
+                      <?php   
+                } else {
+                    echo "không có sản phẩm nào";
+                }
+            ?>
+            <!-- /////////////////////// -->
+          </div>
         </div>
         <!-- content-wrapper ends -->
         <!-- partial:../../partials/_footer.html -->

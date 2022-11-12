@@ -167,6 +167,8 @@
                              $_SESSION['login']=0;
                              $_SESSION['username']="";
                              $_SESSION['gmail']="";
+                             $_SESSION['id_user']="";
+                            //  session_destroy();
                         }
                     ?>
                     
@@ -174,7 +176,7 @@
                         height="31 ; ">
                     </iconify-icon> &nbsp;&nbsp;
                     <p>
-                        Tra cứu <br>Lịch sử đơn hàng
+                       <a href="./Tracuu.php" style="color: white; text-decoration: none; margin:auto; margin-top:-5px;"> Tra cứu <br>Lịch sử đơn hàng</a>
                     </p> &nbsp; &nbsp;
                     <iconify-icon icon="el:shopping-cart" style="color: white; margin-top: -15px;" width="27"
                         height="31"></iconify-icon> <div class="number_cart"><b><?=count($_SESSION['cart'])?></b></div> &nbsp;
@@ -183,8 +185,15 @@
                     </p>
 
                     <p style="color: white;  margin-left: 10px; display: flex; flex-direction: column;">
-                        <iconify-icon icon="healthicons:ui-user-profile" style="color: white;" width="30" height="30"></iconify-icon>
-                        <a href="#" style="color: white; text-decoration: none; margin:auto; margin-top:-5px;" ><?=$_SESSION['username']?></a>
+                        <?php
+                            if(isset($_SESSION['login']) && $_SESSION['login']==1)
+                            {
+                                ?>
+                                    <iconify-icon icon="healthicons:ui-user-profile" style="color: white;" width="30" height="30"></iconify-icon>
+                                    <a href="./profile.php" style="color: white; text-decoration: none; margin:auto; margin-top:-5px;" ><?=$_SESSION['username']?></a>
+                                <?php
+                            }
+                        ?>
                         
                     </p>
                     
@@ -350,10 +359,12 @@
                 <div class="render_body">
                     <ul class="ul_render">
                         <li class="col-md-3 li_render">
+                           <a href="./Tv.php" id="ab">
                             <img src="../image/chuptoathuoc.webp" alt="">
-                            <br><br>
-                            <h5>CHỤP TOA THUỐC</h5>
-                            đơn giản & nhanh chóng
+                                <br><br>
+                                <h5>tư vấn khách hàng</h5>
+                                hỏi & nhận tư vấn
+                           </a>
                         </li>
                         <div style="border-left:solid 1px #b7adad ;"></div>
                         <li class="col-md-3 li_render">
@@ -370,7 +381,7 @@
                             để được tư vấn đặt hàng
                         </li>
                     </ul>
-                    <a class="btn btn-primary" href="#" role="button"
+                    <a class="btn btn-primary" href="#products" role="button"
                         style="background-color: #1d48ba;width: 19%;border-radius: 24px;">
                         mua thuốc ngay
                     </a>
@@ -614,7 +625,7 @@
                 sản phẩm <?php if(isset($_GET['loc'])){echo "lọc theo id danh mục: ". $_GET['loc'];}?>
             </h5>
 
-            <div  style="width: 100%; display: flex; justify-content: space-evenly; flex-wrap: wrap; ">
+            <div id='products'  style="width: 100%; display: flex; justify-content: space-evenly; flex-wrap: wrap; ">
             <?php
                 $result = $conn->query($sql);
     
@@ -804,7 +815,7 @@
                         <img src="<?=$row['img1']?>" alt="">
                         <div style="margin-left: 10px;">
                             <p>
-                            <h4> <?=$row['title']?></h4>
+                            <a href="./blog.php?id=<?=$row['id']?>" id="ab"><h4> <?=$row['title']?></h4></a>
                             </p>
                         </div>
                     </div>

@@ -3,6 +3,7 @@
     $_SESSION['login']=0;
     $_SESSION['username']="";
     $_SESSION['gmail']="";
+    session_destroy();
 ?>
 <h2>
     bạn đã đăng xuất 

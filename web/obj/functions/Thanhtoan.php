@@ -6,6 +6,14 @@
         // require_once("../../classes/dbConnection.php");
         // require ("../classes/dbConnection.php");
         // include '../classes/dbConnection.php';
+        if(isset($_SESSION['login']) && isset($_SESSION['id_user']) && $_SESSION['login']==1)
+        {
+            $user_id= $_SESSION['id_user'];
+        }
+        else
+        {
+            $user_id="";
+        }
         $dbConnection = new dbConnection();
         $conn = $dbConnection->getConnection();
 
@@ -30,7 +38,9 @@
                 }
             }
             // INSERT INTO `hoadon` (`id`, `order_id`, `note`, `ma_gd`, `money`, `code_bank`, `time`) VALUES (NULL, '1', '1', '1', '1', '1', '".time()."');
-            $result = mysqli_query($conn,"INSERT INTO `hoadon` (`id`, `order_id`, `note`, `ma_gd`, `money`, `code_bank`, `time`) VALUES (NULL, '".$_GET['vnp_TxnRef']."', '".$sp_name."', '".$_GET['vnp_TransactionNo']."', '".$_SESSION['tong']."', '".$_GET['vnp_BankCode']."', '".$_GET['vnp_PayDate']."')");
+            $ay= $_GET['vnp_TxnRef'];
+            $result = mysqli_query($conn,"INSERT INTO `hoadon` (`id`, `order_id`, `note`, `ma_gd`, `money`, `code_bank`, `time`,`user_id`) VALUES (NULL, '".$ay."', '".$sp_name."', '".$_GET['vnp_TransactionNo']."', '".$_SESSION['tong']."', '".$_GET['vnp_BankCode']."', '".$_GET['vnp_PayDate']."','".$user_id."')");
+            // echo var_dump($ay);exit;
             // UPDATE `sanpham` SET `deleted` = '1' WHERE `sanpham`.`id` = 49;
             // echo "ok";
             $_SESSION['cart']= array();

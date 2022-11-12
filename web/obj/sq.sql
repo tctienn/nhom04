@@ -54,6 +54,10 @@ CREATE TABLE `blog` (
 
 ALTER TABLE `blog` ADD `render` INT NOT NULL AFTER `img2`;
 ALTER TABLE `blog` ADD `vitri` INT NOT NULL AFTER `render`;
+ALTER TABLE `hoadon` ADD `user_id` INT NOT NULL AFTER `time`;
+ALTER TABLE `hoadon` CHANGE `order_id` `order_id` INT(255) NULL DEFAULT NULL;
+ALTER TABLE `hoadon` CHANGE `order_id` `order_id` VARCHAR(255) NULL DEFAULT NULL;
+ALTER TABLE `hoadon` CHANGE `time` `time` VARCHAR(225) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NULL DEFAULT NULL;
 --  2. bảng sản phẩm
 --     id : khóa tự tăng
 --     name: string -> 350

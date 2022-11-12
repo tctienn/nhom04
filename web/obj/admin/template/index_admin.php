@@ -24,13 +24,23 @@
     $dm_cout = $conn->query($sql3);
     $dm_cout = mysqli_num_rows( $dm_cout);
     // đếm blog
-    $sq4 = "SELECT * FROM danhmuc ";
+    $sql4 = "SELECT * FROM blog ";
     $blog_cout = $conn->query($sql4);
     $blog_cout = mysqli_num_rows( $blog_cout);
 
-      $sq5 = "SELECT * FROM danhmuc  where render= '1' ";
-      $blog_on = $conn->query($sql5);
+      $sql_on = "SELECT * FROM blog where `render`=1 ";
+      $blog_on = $conn->query($sql_on);
       $blog_on = mysqli_num_rows( $blog_on);
+
+    
+    // đếm số hóa đơn
+    $sql6 = "SELECT * FROM hoadon ";
+    $hoadon = $conn->query($sql6);
+    $hoadon = mysqli_num_rows( $hoadon);
+
+      $sql7 = "SELECT * FROM hoadon  where `user_id` = '0' ";
+      $hoadon2 = $conn->query($sql7);
+      $hoadon2 = mysqli_num_rows( $hoadon2);
 
 
 
@@ -248,8 +258,7 @@
                 <p class="mb-1 mt-3 font-weight-semibold"><?=$_SESSION['username']?></p>
                 <p class="fw-light text-muted mb-0"><?=$_SESSION['gmail']?></p>
               </div>
-              <a class="dropdown-item"><i class="dropdown-item-icon mdi mdi-account-outline text-primary me-2"></i> My
-                Profile <span class="badge badge-pill badge-danger">1</span></a>
+              <a href="../../html/profile.php" class="dropdown-item"><i class="dropdown-item-icon mdi mdi-account-outline text-primary me-2"></i> profile <span class="badge badge-pill badge-danger">1</span></a>
               <a class="dropdown-item"><i class="dropdown-item-icon mdi mdi-message-text-outline text-primary me-2"></i>
                 Messages</a>
               <a class="dropdown-item"><i
@@ -559,7 +568,7 @@
               </ul>
             </div>
           </li>
-          <li class="nav-item nav-category">Trang</li>
+          <li class="nav-item nav-category">người dùng</li>
           <li class="nav-item">
             <a class="nav-link" data-bs-toggle="collapse" href="#auth" aria-expanded="false" aria-controls="auth">
               <i class="menu-icon mdi mdi-account-circle-outline"></i>
@@ -641,9 +650,9 @@
                             <p class="text-success d-flex"><i class="mdi mdi-menu-down"></i><span>blog đang hoạt động: <?=$blog_on?></span></p>
                           </div>
                           <div class="d-none d-md-block">
-                            <p class="statistics-title">New Sessions</p>
-                            <h3 class="rate-percentage">68.8</h3>
-                            <p class="text-danger d-flex"><i class="mdi mdi-menu-down"></i><span>68.8</span></p>
+                            <p class="statistics-title">hóa đơn</p>
+                            <h3 class="rate-percentage"><?=$hoadon?></h3>
+                            <p class="text-danger d-flex"><i class="mdi mdi-menu-down"></i><span>hóa đơn ko tài khoản: <?=$hoadon2?></span></p>
                           </div>
                           <div class="d-none d-md-block">
                             <p class="statistics-title">Avg. Time on Site</p>

@@ -56,12 +56,14 @@ if (isset($_GET['action']) && $_GET['action'] == "login") {
                     $_SESSION['login'] = 1;
                     $_SESSION['username']=$username;
                     $_SESSION['gmail']=$row['gmail'];
+                    $_SESSION['id_user']=$row['id'];
                     header("Location: http://localhost/monwebnangcao/obj_clone/nhom04/web/obj/admin/template/index_admin.php");
                 } 
                 else
                 {
                     
                     $_SESSION['login'] = 1;
+                    $_SESSION['id_user']=$row['id'];
                     // echo "ui".$_SESSION['login'];exit;
                     $_SESSION['username']=$username;
                     header("Location: http://localhost/monwebnangcao/obj_clone/nhom04/web/obj/html/");

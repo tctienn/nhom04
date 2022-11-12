@@ -12,8 +12,8 @@
             $mail->CharSet  = "utf-8";  
             $mail->Host = 'smtp.gmail.com';  //địa chỉ mail server
             $mail->SMTPAuth = true; // cho phép kiểm tra mail server
-            $mail->Username = 'demowess@gmail.com'; // SMTP username điền web server(có tạo mật khẩu ứng dụng)
-            $mail->Password = 'pcfwpeahveqkdyhi';   // SMTP password
+            $mail->Username = 'demoweb2220@gmail.com'; // SMTP username điền web server(có tạo mật khẩu ứng dụng)
+            $mail->Password = 'knxmcyngzxyyuehq';   // SMTP password
             $mail->SMTPSecure = 'ssl';  // encryption TLS/SSL kiểu mã hóa
             $mail->Port = 465;  // port to connect to nếu kiểu ssl thì port dùng 465 nếu là TLS thì port là 587              
             $mail->setFrom('demowess@gmail.com', 'obj web' );   // địa chỉ mail của người gủi và tên người gủi

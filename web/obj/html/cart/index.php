@@ -168,6 +168,16 @@
         }
       ?>
 </div>
+
+<?php
+  if(isset($_SESSION['login']) && $_SESSION['login']!=1)
+  {
+    ?>
+      <div style="color:red; " >bạn chưa đăng nhập. nếu bạn thực hiện thanh toán ngay yêu cầu lưu lại mã hóa đơn hoặc ảnh hóa đơn để thực hiện tra cứu</div>
+    <?php
+  }
+?>
+
 <!-- partial -->
   <script src='//cdnjs.cloudflare.com/ajax/libs/jquery/2.1.3/jquery.min.js'></script><script  src="./script.js"></script>
 
