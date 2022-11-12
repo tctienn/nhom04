@@ -39,7 +39,10 @@
             }
             // INSERT INTO `hoadon` (`id`, `order_id`, `note`, `ma_gd`, `money`, `code_bank`, `time`) VALUES (NULL, '1', '1', '1', '1', '1', '".time()."');
             $ay= $_GET['vnp_TxnRef'];
-            $result = mysqli_query($conn,"INSERT INTO `hoadon` (`id`, `order_id`, `note`, `ma_gd`, `money`, `code_bank`, `time`,`user_id`) VALUES (NULL, '".$ay."', '".$sp_name."', '".$_GET['vnp_TransactionNo']."', '".$_SESSION['tong']."', '".$_GET['vnp_BankCode']."', '".$_GET['vnp_PayDate']."','".$user_id."')");
+            $date=$_GET['vnp_PayDate']; // chỉ lấy ngày
+            // echo date('Y/m/d',strtotime($date));exit;
+            $date=date('Ymd',strtotime($date));
+            $result = mysqli_query($conn,"INSERT INTO `hoadon` (`id`, `order_id`, `note`, `ma_gd`, `money`, `code_bank`, `time`,`user_id`) VALUES (NULL, '".$ay."', '".$sp_name."', '".$_GET['vnp_TransactionNo']."', '".$_SESSION['tong']."', '".$_GET['vnp_BankCode']."', '".$date."','".$user_id."')");
             // echo var_dump($ay);exit;
             // UPDATE `sanpham` SET `deleted` = '1' WHERE `sanpham`.`id` = 49;
             // echo "ok";

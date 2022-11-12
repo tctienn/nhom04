@@ -84,6 +84,7 @@
           <div class="product-price"> <?= number_format($row["gia"],0,",",".");  ?>đ</div>
           <div class="product-quantity"><?php $as="cout". $i; ?>
             <input type="number" form="check" name="<?=$as?>" value="<?=$_SESSION['cart'][$i]->cout;?>" min="1">
+            
             <!-- <input type="submit"> -->
           </div>
           
@@ -105,6 +106,10 @@
   ?>
   
   <input type="hidden" id="hidden"  form="check" name="tong" value="0">
+  <?php 
+    // if(isset($_GET['number'])){echo var_dump($_GET['number']);exit;} ????
+    
+  ?>
 
 
 

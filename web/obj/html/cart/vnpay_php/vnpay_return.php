@@ -7,7 +7,7 @@
         <!-- The above 3 meta tags *must* come first in the head; any other head content must come *after* these tags -->
         <meta name="description" content="">
         <meta name="author" content="">
-        <title>VNPAY RESPONSE</title>
+        <title>hóa đơn</title>
         <!-- Bootstrap core CSS -->
         <link href="/vnpay_php/assets/bootstrap.min.css" rel="stylesheet"/>
         <!-- Custom styles for this template -->
