@@ -1,16 +1,6 @@
 <!--  -->
 <?php
-    session_start();
-    if(!isset($_SESSION['username']) || !isset($_SESSION['gmail'] ))
-    {
-        $_SESSION['username']="";
-        $_SESSION['gmail']="";
-    }
-    $_SESSION['loc']="";
-    $arr = array();
-    $pro = new stdclass;
-    $pro->id="";
-    $pro->cout=0;
+    
     if(!isset($_SESSION['cart']))
         {           
             $_SESSION['cart']=$arr;
