@@ -38,7 +38,7 @@
     <?php
     // $baseURL = 'http://' . $_SERVER['HTTP_HOST'] . $_SERVER['REQUEST_URI'];
     $baseURL='http://localhost/monwebnangcao/obj_clone/nhom04/web/obj/admin/template/pages/sanpham/';
-     
+    echo $_SERVER['REQUEST_URI'];exit;
     // var_dump($baseURL);exit;
         // $allFiless = getAllFiles();
         if(!empty($errors))
